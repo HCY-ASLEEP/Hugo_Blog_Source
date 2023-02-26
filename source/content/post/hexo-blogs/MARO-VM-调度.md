@@ -14,7 +14,7 @@ tags:
 ###### 
 
 ### 资源供需
-<img src="https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.27.20.00.43.png"/>
+![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.27.20.00.43.png)
 
 - 每个 **PM** 中的物理资源是中心资源，包括 **物理内核** 和 **内存**
 	
@@ -23,7 +23,7 @@ tags:
 	- VM 的资源利用率动态变化，PM 的实时能耗将在 **Runtime-Simulation（模拟器）** 中被模拟出来
 	- VM 执行一段时间后完成其任务，**模拟器** 将释放分配给此 VM 的资源，并从 PM 中解除分配此 VM ，物理资源被释放，可以处理下一个 VM 请求 
 
-<img src="https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.28.15.14.52.png"/>
+![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.28.15.14.52.png)
 
 
 ###### 
@@ -90,7 +90,7 @@ tags:
 		- 能耗曲线
 			
 			- 这个非线性曲线反映了 CPU 利用率 与 能耗 的关系，用于模拟（计算）能耗
-	<img src="https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/vm.energy_curve.svg"/>
+	![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/vm.energy_curve.svg)
 
 ###### 
 

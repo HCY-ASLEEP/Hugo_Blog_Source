@@ -59,4 +59,4 @@ tags:
 
 效果可以参考👇
 
-![](/pictures/photo_album/eat/xiaoguotu.png)
+![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/xiaoguotu.png)
