@@ -35,9 +35,10 @@ tags:
         git remote -v
         ```
     - 然后用命令行获取最新代码到本地临时分支（自定义为tempBranch），获取到的远端分支为origin/dev
-	```bash
-	git fetch origin dev:tempBranch
-	```
+    
+	    ```bash
+	    git fetch origin dev:tempBranch
+	    ```
     - 用命令行去查看本地tempBranch分支和当前分支的版本差异
         ```bash
         git diff tempBranch
