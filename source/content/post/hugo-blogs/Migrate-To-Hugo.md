@@ -24,182 +24,8 @@ Tags:
 
 **正文**
 
-1. 我觉得 config.yaml 比文字说明更加说明配置
+1. PaperMod theme 配置小技巧
 
-    ```yaml
-    baseURL: "https://hcy-asleep.github.io/"
-    title: Memos
-    paginate: 5
-    theme: PaperMod
-    
-    enableRobotsTXT: true
-    buildDrafts: false
-    buildFuture: true
-    buildExpired: false
-    
-    googleAnalytics: UA-123-45
-    
-    minify:
-      disableXML: true
-      minifyOutput: true
-    
-    params:
-      env: production # to enable google analytics, opengraph, twitter-cards and schema.
-      title: HCY-BLOGS
-      description: "Welcome"
-      keywords: [Blog, Portfolio, PaperMod]
-      author: HCY
-      # author: ["Me", "You"] # multiple authors
-      images: [""]
-      DateFormat: "January 2, 2006"
-      defaultTheme: dark # dark, light
-      disableThemeToggle: true
-    
-      ShowReadingTime: true
-      ShowShareButtons: false
-      ShowPostNavLinks: true
-      ShowBreadCrumbs: true
-      ShowCodeCopyButtons: true
-      ShowWordCount: true
-      ShowRssButtonInSectionTermList: true
-      UseHugoToc: true
-      disableSpecial1stPost: false
-      disableScrollToTop: false
-      comments: true
-      hidemeta: false
-      hideSummary: false
-      showtoc: false
-      tocopen: false
-    
-      assets:
-        disableHLJS: true # to disable highlight.js
-        # disableFingerprinting: true
-        favicon: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
-        favicon16x16: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
-        favicon32x32: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
-        apple_touch_icon: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
-        safari_pinned_tab: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
-    
-      label:
-        text: "主页"
-        icon:
-        iconHeight: 35
-    
-      # profile-mode
-      profileMode:
-        enabled: false # needs to be explicitly set
-        title: ExampleSite
-        subtitle: "This is subtitle"
-        imageUrl: "<img location>"
-        imageWidth: 120
-        imageHeight: 120
-        imageTitle: my image
-        buttons:
-          - name: Posts
-            url: posts
-          - name: Tags
-            url: tags
-    
-      # home-info mode
-      homeInfoParams:
-        Title: "Hallo~ \U0001F44B"
-        Content: "Welcome to my blog"
-    
-      socialIcons:
-        # - name: twitter
-        #   url: "https://twitter.com/"
-        # - name: stackoverflow
-        #   url: "https://stackoverflow.com"
-        - name: github
-          url: "https://github.com/HCY-ASLEEP"
-        - name: email
-          url: "mailto:2420066864@qq.com"
-    
-      analytics:
-        google:
-          SiteVerificationTag: "XYZabc"
-        bing:
-          SiteVerificationTag: "XYZabc"
-        yandex:
-          SiteVerificationTag: "XYZabc"
-    
-      cover:
-        hidden: true # hide everywhere but not in structured data
-        hiddenInList: true # hide on list pages and home
-        hiddenInSingle: true # hide on single page
-    
-      editPost:
-        URL: "https://github.com/HCY-ASLEEP"
-        Text: " Follow me" # edit text
-        appendFilePath: false # to append file path to Edit link
-    
-      # for search
-      # https://fusejs.io/api/options.html
-      fuseOpts:
-        isCaseSensitive: false
-        shouldSort: true
-        location: 0
-        distance: 1000
-        threshold: 0.4
-        minMatchCharLength: 0
-        keys: ["title", "permalink", "summary", "content"]
-    menu:
-      main:
-        - identifier: categories
-          name: 目录
-          url: /categories/
-          weight: 20
-        - identifier: tags
-          name: 标签
-          url: /tags/
-          weight: 10
-        - identifier: search
-          name: 🔍
-          url: /search/
-          weight: 30
-        - identifier: archives
-          name: 归档
-          url: /archives/
-          weight: 10
-        - identifier: about
-          name: 关于
-          url: /about/
-          weight: 30
-        - identifier: friends
-          name: 友链
-          url: /friends/
-          weight: 29
-    # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
-    pygmentsUseClasses: true
-    markup:
-      highlight:
-        # noClasses: false
-        # anchorLineNos: true
-        codeFences: true
-        guessSyntax: true
-        lineNos: true
-        style: monokailight
-    
-      goldmark:
-        renderer:
-          unsafe: true
-    
-    
-    outputs:
-        home:
-            - HTML
-            - RSS
-            - JSON # is necessary
-    
-    disablePathToLower: true
-    
-    permalinks:
-        post: /:slug/
-        page: /:slug/
-        
-    pygmentsOptions: linenos=table
-    ```
-    
     - 代码块显示行数(Code block line number display)
     
         ```yaml
@@ -377,6 +203,184 @@ Tags:
 2. Hugo 与 Hexo 的使用区别
 
     - 文章头部如果使用了 draft:true ，那么这篇文件将不会被生成，只是作为草稿    
+    
     - hugo server 等价于 hexo g && hexo s ，但是不会将生成的文件存入磁盘中，也就是说，public 文件夹里面将不会有任何改变
     
     - hexo d 就可以发布了，不过在 hugo 里面要先执行 `hugo` ，在 public 下生成 html 文件，然后在 pulbic 下 git push 发布
+
+3. 我的 config.yaml 如下
+
+    ```yaml
+    baseURL: "https://hcy-asleep.github.io/"
+    title: Memos
+    paginate: 5
+    theme: PaperMod
+    
+    enableRobotsTXT: true
+    buildDrafts: false
+    buildFuture: true
+    buildExpired: false
+    
+    googleAnalytics: UA-123-45
+    
+    minify:
+      disableXML: true
+      minifyOutput: true
+    
+    params:
+      env: production # to enable google analytics, opengraph, twitter-cards and schema.
+      title: HCY-BLOGS
+      description: "Welcome"
+      keywords: [Blog, Portfolio, PaperMod]
+      author: HCY
+      # author: ["Me", "You"] # multiple authors
+      images: [""]
+      DateFormat: "January 2, 2006"
+      defaultTheme: dark # dark, light
+      disableThemeToggle: true
+    
+      ShowReadingTime: true
+      ShowShareButtons: false
+      ShowPostNavLinks: true
+      ShowBreadCrumbs: true
+      ShowCodeCopyButtons: true
+      ShowWordCount: true
+      ShowRssButtonInSectionTermList: true
+      UseHugoToc: true
+      disableSpecial1stPost: false
+      disableScrollToTop: false
+      comments: true
+      hidemeta: false
+      hideSummary: false
+      showtoc: false
+      tocopen: false
+    
+      assets:
+        disableHLJS: true # to disable highlight.js
+        # disableFingerprinting: true
+        favicon: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
+        favicon16x16: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
+        favicon32x32: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
+        apple_touch_icon: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
+        safari_pinned_tab: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
+    
+      label:
+        text: "主页"
+        icon:
+        iconHeight: 35
+    
+      # profile-mode
+      profileMode:
+        enabled: false # needs to be explicitly set
+        title: ExampleSite
+        subtitle: "This is subtitle"
+        imageUrl: "<img location>"
+        imageWidth: 120
+        imageHeight: 120
+        imageTitle: my image
+        buttons:
+          - name: Posts
+            url: posts
+          - name: Tags
+            url: tags
+    
+      # home-info mode
+      homeInfoParams:
+        Title: "Hallo~ \U0001F44B"
+        Content: "Welcome to my blog"
+    
+      socialIcons:
+        # - name: twitter
+        #   url: "https://twitter.com/"
+        # - name: stackoverflow
+        #   url: "https://stackoverflow.com"
+        - name: github
+          url: "https://github.com/HCY-ASLEEP"
+        - name: email
+          url: "mailto:2420066864@qq.com"
+    
+      analytics:
+        google:
+          SiteVerificationTag: "XYZabc"
+        bing:
+          SiteVerificationTag: "XYZabc"
+        yandex:
+          SiteVerificationTag: "XYZabc"
+    
+      cover:
+        hidden: true # hide everywhere but not in structured data
+        hiddenInList: true # hide on list pages and home
+        hiddenInSingle: true # hide on single page
+    
+      editPost:
+        URL: "https://github.com/HCY-ASLEEP"
+        Text: " Follow me" # edit text
+        appendFilePath: false # to append file path to Edit link
+    
+      # for search
+      # https://fusejs.io/api/options.html
+      fuseOpts:
+        isCaseSensitive: false
+        shouldSort: true
+        location: 0
+        distance: 1000
+        threshold: 0.4
+        minMatchCharLength: 0
+        keys: ["title", "permalink", "summary", "content"]
+    menu:
+      main:
+        - identifier: categories
+          name: 目录
+          url: /categories/
+          weight: 20
+        - identifier: tags
+          name: 标签
+          url: /tags/
+          weight: 10
+        - identifier: search
+          name: 🔍
+          url: /search/
+          weight: 30
+        - identifier: archives
+          name: 归档
+          url: /archives/
+          weight: 10
+        - identifier: about
+          name: 关于
+          url: /about/
+          weight: 30
+        - identifier: friends
+          name: 友链
+          url: /friends/
+          weight: 29
+    # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+    pygmentsUseClasses: true
+    markup:
+      highlight:
+        # noClasses: false
+        # anchorLineNos: true
+        codeFences: true
+        guessSyntax: true
+        lineNos: true
+        style: monokailight
+    
+      goldmark:
+        renderer:
+          unsafe: true
+    
+    
+    outputs:
+        home:
+            - HTML
+            - RSS
+            - JSON # is necessary
+    
+    disablePathToLower: true
+    
+    permalinks:
+        post: /:slug/
+        page: /:slug/
+        
+    pygmentsOptions: linenos=table
+    ```
+ 
