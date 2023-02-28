@@ -58,6 +58,17 @@ Tags:
             renderer:
               unsafe: true
         ```
+
+    - 文章大纲（文章导航）
+        
+        文章导航在 hugo 里面也叫 table of content 即 toc
+        
+        ```
+        # config.yaml
+        params:
+          showtoc: true
+          tocopen: false
+        ```
         
     - 评论系统(Giscus)
         
