@@ -63,7 +63,7 @@ Tags:
         
         文章导航在 hugo 里面也叫 table of content 即 toc
         
-        ```
+        ```yaml
         # config.yaml
         params:
           showtoc: true
