@@ -46,7 +46,7 @@ tags:
 5. 有一些包是其他教程里面推荐的，不过我觉得应该不用
 
     ```bash
-    sudo pacman -S  xfce4-goodies   # Xfce4 包组（group）
+    sudo pacman -S xfce4-goodies   # Xfce4 包组（group）
     sudo pacman -S xorg xorg-xinit
     sudo pacman -S xdg-desktop-portal
     ```
