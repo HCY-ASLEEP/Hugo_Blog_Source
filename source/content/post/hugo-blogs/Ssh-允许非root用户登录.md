@@ -3,6 +3,7 @@ title: "SSH 允许非root用户登录"
 date: 2023-03-05T13:53:48+08:00
 tags:
     - Linux
+    - SSH
 ---
 
 通过配置`/etc/ssh/sshd_config`文件的`AllowUsers`，可以添加多个允许登录的用户名，不同用户名之间用空格分开，不在其中的用户则不可以登录
