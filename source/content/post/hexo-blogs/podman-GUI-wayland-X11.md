@@ -23,7 +23,7 @@ tags:
 3. run 容器即可
     
     ```bash
-    podman run -it --net=host -e DISPLAY=:0 --name=devenv -v /home/hcy/Gateway/:/home/devenv/Gateway devenv /bin/bash
+    podman run -it --net=host -e DISPLAY=$DISPLAY --name=devenv -v /home/hcy/Gateway/:/home/devenv/Gateway devenv /bin/bash
     ```
     
     
@@ -42,7 +42,7 @@ tags:
     
     
     ```bash
-    ... -e DISPLAY=:0 ...   // 使用 host 的显示 
+    ... -e DISPLAY=$DISPLAY ...   // 使用 host 的显示 
     ```
     
     ```bash
