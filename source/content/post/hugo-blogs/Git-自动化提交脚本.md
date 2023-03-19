@@ -8,10 +8,11 @@ tags:
 我自己的:
 
 ```bash
+cd $(dirname $0)
 cur=`date +%Y-%m-%d\ \|\ %H-%M-%S`
 git add -A
 git commit -m "$cur"
-unset cur
+git push origin main
 ```
 
 网上的:
