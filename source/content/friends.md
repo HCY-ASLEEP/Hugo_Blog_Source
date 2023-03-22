@@ -45,3 +45,11 @@ W : 上号吗？
 </div></div><br/>
 </a>
 
+
+<a href="https://kincih.github.io/">
+<div align="left"><div style="width: 60%; border-style: solid; border-width: 1px; border-radius: 16px; position: relative; padding:30px; text-align:center">
+Kincih : 不读书了
+</div></div><br/>
+</a>
+
+
