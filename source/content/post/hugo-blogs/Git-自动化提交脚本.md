@@ -13,6 +13,7 @@ cur=`date +%Y-%m-%d\ \|\ %H-%M-%S`
 git add -A
 git commit -m "$cur"
 git push origin main
+unset cur
 ```
 
 网上的:
