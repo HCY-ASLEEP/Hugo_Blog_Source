@@ -1,9 +1,10 @@
 ---
-title: "Arch Grub 分辨率"
+title: "Linux Grub 分辨率"
 date: 2023-02-28T22:27:36+08:00
-description: Change grub resolution on arch
+description: Change grub resolution on arch/debian
 tags:
     - Arch
+    - Debian
     - Linux
 ---
 
@@ -20,6 +21,14 @@ tags:
     ```
 3. 重新构建 grub
 
-    ```bash
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
-    ```
+    - Arch
+
+        ```bash
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
+        ```
+        
+    - Debian
+    
+        ```bash
+        sudo update-grub
+        ```
