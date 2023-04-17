@@ -52,6 +52,7 @@ This is my hugo source markdown files.
 Quikly config blogs source files:
 
 ```bash
+git config --global init.defaultBranch main;\
 git config --global user.name "hcy-asleep";\
 git config --global user.email 2420066864@qq.com;\
 git config  --global credential.helper store;\
