@@ -57,5 +57,5 @@ git clone https://github.com/HCY-ASLEEP/Hugo_Blog_Source.git;\
 mv Hugo_Blog_Source/ blogs/;\
 mkdir blogs/source/themes/;\
 git clone https://github.com/adityatelange/hugo-PaperMod.git blogs/source/themes/;\
-mv blogs/source/themes/hugo-PaperMod/ blogs/source/themes/PaperMod/;\
+mv blogs/source/themes/hugo-PaperMod/ blogs/source/themes/PaperMod/;
 ```
