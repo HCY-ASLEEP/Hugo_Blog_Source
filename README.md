@@ -47,7 +47,9 @@ This is my hugo source markdown files.
 
 31 directories, 12 files
 ```
+---------------------
 
+Quikly config blogs source files:
 
 ```bash
 git config --global user.name "hcy-asleep";\
