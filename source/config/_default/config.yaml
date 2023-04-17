@@ -73,7 +73,7 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Hallo~ \U0001F44B"
+    Title: "Hʌllo~ \U0001F44B"
     Content: "Welcome to my blog"
 
   socialIcons:
