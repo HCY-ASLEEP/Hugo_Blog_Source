@@ -56,5 +56,5 @@ git config  --global credential.helper store;\
 git clone https://github.com/HCY-ASLEEP/Hugo_Blog_Source.git;\
 mv Hugo_Blog_Source/ blogs/;\
 mkdir blogs/source/themes/;\
-git clone https://github.com/adityatelange/hugo-PaperMod.git blogs/source/themes/PaperMod/;\
+git clone https://github.com/adityatelange/hugo-PaperMod.git blogs/source/themes/PaperMod/;
 ```
