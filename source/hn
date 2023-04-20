@@ -1,0 +1,2 @@
+hugo new content/post/hugo-blogs/$1.md;\
+nvim content/post/hugo-blogs/$1.md;
