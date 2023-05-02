@@ -1,5 +1,5 @@
 ---
-title: Friend Portals
+title: Friends
 date: 2023-02-11 05:31:53
 ---
 

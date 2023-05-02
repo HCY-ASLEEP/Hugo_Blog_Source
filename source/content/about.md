@@ -1,5 +1,5 @@
 ---
-title: About Me
+title: About
 date: 2023-02-13 06:30:02
 showtoc: false
 ---
