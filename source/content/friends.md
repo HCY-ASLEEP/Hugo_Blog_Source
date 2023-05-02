@@ -48,7 +48,7 @@ W : 上号吗？
 
 <a href="https://kincih.github.io/">
 <div align="left"><div style="width: 60%; border-style: solid; border-width: 1px; border-radius: 16px; position: relative; padding:30px; text-align:center">
-Kincih : 不读书了
+Kincih : 年薪二十万还不如考研
 </div></div><br/>
 </a>
 
