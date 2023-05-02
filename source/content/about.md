@@ -3,6 +3,9 @@ title: About Me
 date: 2023-02-13 06:30:02
 showtoc: false
 ---
+
+<!--
+
 <style>
 .about_horizontal_arrangement{
 display:flex;
@@ -10,8 +13,8 @@ gap: 20px;
 }
 
 .about_under_line_gap{
-padding-bottom: 7px;
-border-bottom: 2px solid gray;
+padding-bottom: 7px; 
+border-bottom: 1px solid gray; 
 }
 </style>
 
@@ -36,7 +39,36 @@ border-bottom: 2px solid gray;
 </div>
 
 <br/>
-<h4 align="center"><span class="about_under_line_gap">问句天几高 心中志比天更高</span></h2>
+
+<h3 align="center"><span class="about_under_line_gap">「不再犹豫」</span></h3>
+
+-->
+
+</br>
+
+<h2 align="center">「 不再犹豫 」</h2>
+<center style="margin-top: 9px">无聊望见了犹豫</center>
+<center style="margin-top: 9px">达到理想不太易</center>
+<center style="margin-top: 9px">即使有信心 斗志却抑止</center>
+<center style="margin-top: 9px">谁人定我去或留</center>
+<center style="margin-top: 9px">定我心中的宇宙</center>
+<center style="margin-top: 9px">只想靠两手 向理想挥手</span></center>
+<center style="margin-top: 9px">问句天几高</center>
+<center style="margin-top: 9px">心中志比天更高</center>
+<center style="margin-top: 9px">自信打不死的心态活到老</center>
+<center style="margin-top: 9px">Wo oh</center>
+<center style="margin-top: 9px">我有我心底故事</center>
+<center style="margin-top: 9px">亲手写上每段得失乐与悲与梦儿</center>
+<center style="margin-top: 9px">Wo oh</center>
+<center style="margin-top: 9px">纵有创伤不退避</center>
+<center style="margin-top: 9px">梦想有日达成</center>
+<center style="margin-top: 9px">找到心底梦想的世界</center>
+<center style="margin-top: 9px">终可见</center>
+
+
+
+<!--
+
 <br/>
 <br/>
 <br/>
@@ -66,3 +98,5 @@ border-bottom: 2px solid gray;
 </div>
 
 </br>
+
+-->
