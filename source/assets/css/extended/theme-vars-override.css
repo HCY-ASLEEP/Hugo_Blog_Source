@@ -38,9 +38,9 @@
 
 /* 归档里面的下划线颜色 */
 .archive-month:not(:last-of-type) {
-    border-bottom: 1px solid rgb(200 200 200);
+    border-bottom: 1px solid rgb(190 190 190);
 }
 
 .archive-year:not(:last-of-type) {
-    border-bottom: 1px solid rgb(200 200 200);
+    border-bottom: 1px solid rgb(190 190 190);
 }
