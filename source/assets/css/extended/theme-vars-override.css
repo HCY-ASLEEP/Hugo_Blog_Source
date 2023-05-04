@@ -9,3 +9,13 @@
     --code-bg: rgb(245, 246, 247);
     --border: rgb(238, 238, 238);
 }
+
+.pagination a {
+    color: black;
+    font-size: 13px;
+    font-weight: bold; 
+    line-height: 36px;
+    background: rgb(222 222 222);
+    border-radius: calc(36px/2);
+    padding: 0 16px;
+}
