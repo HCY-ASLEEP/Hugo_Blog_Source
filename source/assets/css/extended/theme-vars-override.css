@@ -10,6 +10,7 @@
     --border: rgb(238, 238, 238);
 }
 
+/* 主页的上一页和下一页按钮的样式 */
 .pagination a {
     color: black;
     font-size: 13px;
@@ -23,6 +24,7 @@
     padding: 0 16px;
 }
 
+/* 分类和标签里面的按钮样式 */
 .terms-tags a {
     display: block;
     padding: 3px 10px;
@@ -32,4 +34,13 @@
     border-color: rgb(220 220 220);
     border-radius: 6px;
     transition: transform .1s;
+}
+
+/* 归档里面的下划线颜色 */
+.archive-month:not(:last-of-type) {
+    border-bottom: 1px solid rgb(200 200 200);
+}
+
+.archive-year:not(:last-of-type) {
+    border-bottom: 1px solid rgb(200 200 200);
 }
