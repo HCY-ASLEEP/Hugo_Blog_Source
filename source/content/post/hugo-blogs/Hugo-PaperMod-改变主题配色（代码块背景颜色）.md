@@ -19,10 +19,8 @@ source
 │       └── extended
 │           ├── emacs.css
 │           └── theme-vars-override.css
-├── autogit
 ├── config
 ├── content
-├── hn
 ├── layouts
 ├── public
 ├── resources
