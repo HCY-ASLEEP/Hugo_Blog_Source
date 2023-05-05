@@ -21,7 +21,7 @@ tags:
     
     - 设置 token 为 hcy ，远程访问的时候如下访问
     
-        ```url
+        ```bash
         # {jupyter notebook ip}:8888/?token=hcy 
         http://172.35.40.120:8888/?token=hcy
         ```

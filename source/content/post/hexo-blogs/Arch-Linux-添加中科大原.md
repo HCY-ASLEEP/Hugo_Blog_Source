@@ -7,25 +7,25 @@ tags:
     - Linux
 ---
 
-##### 添加中科大的Arch Linux源
+1. 添加中科大的Arch Linux源
 
-- 编辑 /etc/pacman.d/mirrorlist ，在文件的最顶端添加
-
-    ```bash
-    Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
-    ```
-        
-##### 添加中科大的Arch Linux CN源
-
-- 在 /etc/pacman.conf 文件末尾添加两行
-
-    ```bash
-    [archlinuxcn]
-    Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
-    ```
+    - 编辑 /etc/pacman.d/mirrorlist ，在文件的最顶端添加
     
-- 然后安装 archlinuxcn-keyring 包以导入 GPG key
+        ```bash
+        Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch
+        ```
+        
+2. 添加中科大的Arch Linux CN源
 
-    ```bash
-    sudo pacman -S archlinuxcn-keyring
-    ```
+    - 在 /etc/pacman.conf 文件末尾添加两行
+    
+        ```bash
+        [archlinuxcn]
+        Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+        ```
+        
+    - 然后安装 archlinuxcn-keyring 包以导入 GPG key
+    
+        ```bash
+        sudo pacman -S archlinuxcn-keyring
+        ```
