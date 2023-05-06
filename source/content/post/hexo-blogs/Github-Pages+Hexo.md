@@ -7,18 +7,21 @@ tags:
     - Github
 ---
 **Github Pages 可以为个人博客提供支持，Hexo 可以让 Github Pages 更加美观和提供本地预览，而不需要上传到 Github Pages 之后再看到效果**
-###### 
+
+ 
 **安装准备**（本地）：
 - git
 - npm
-###### 
+
+ 
 **配置 Git**
 ```bash
 git config --global user.name "github 用户名"
 git config --global user.email "github 注册邮箱"
 ```
 Github 已经不支持密码登录，需要复杂一点的步骤去验证
-###### 
+
+ 
 1. 到个人中心-设置-setting
 2. ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/75e96721a3344ed5b397ec8adfeedb98.png)
 3. ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/4eb29e6a9b2c4bf6b2b5db9299b1a393.png)
@@ -28,11 +31,14 @@ Github 已经不支持密码登录，需要复杂一点的步骤去验证
    ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/852ef46dcc3d4018bc79fdac2ed8c917.png)
 6. 点击 generate token按钮
 
-###### 
+
+ 
 然后 生成了token 一定要复制，不然刷新浏览器就没了
-###### 
+
+ 
 拿到token以后再去git push/clone ，password就是输入刚才复制的token
-###### 
+
+ 
 **Hexo 安装（本地全局）**
 ```bash
 npm i hexo-cli -g
@@ -61,24 +67,30 @@ hexo s 				# 打开本地服务器
 ```
 然后就可以看到如下的界面
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.14.48.30.png)
-###### 
+
+ 
 **发布到 Github Pages 上面**
-###### 
+
+ 
 注册 Github 帐号，有帐号了不用注册
-###### 
+
+ 
 新建一个空仓库，暂时不要创建 README.md ，而且得确保你的仓库是 public 同时，仓库名一定要是 **用户名.github.io**
-###### 
+
+ 
 在上文提到的 blogs 文件夹下面安装 hexo-deployer-git
 ```bash
 npm install --save hexo-deployer-git
 ```
-###### 
+
+ 
 在刚才的博客根目录中的站点配置文件 "_config.yml" ，设置为你的个人仓库名，branch 与你的 git 主分支对应
 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/v2-376b7a40b8e6a310cc31bd3522ea9a7a_r.jpg)
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/v2-d15b384267cf4fa326c2e2febb1b2b62_r.png)
 
-###### 
+
+ 
 开始推送内容到 Github 上去
 
 ```bash

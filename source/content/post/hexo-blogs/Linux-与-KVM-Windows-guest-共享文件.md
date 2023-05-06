@@ -6,7 +6,7 @@ tags:
     - Linux
 ---
 
-- #### 将文件从 Linux Host 传到 KVM Windows Guest
+- 将文件从 Linux Host 传到 KVM Windows Guest
     
     - 在 Windows Guest 里面下载安装如下地址的软件
     
@@ -19,9 +19,9 @@ tags:
     
 </br>
 
-- #### 将文件从 KVM Windows Guest 传到 Linux Host
+- 将文件从 KVM Windows Guest 传到 Linux Host
 
-    - ##### 在 Windows Guest 里面设置共享文件夹
+    - 在 Windows Guest 里面设置共享文件夹
     
         - 新建文件夹（此处在 C盘 根目录下）
         
@@ -89,7 +89,7 @@ tags:
             
     </br> 
     
-    - ##### Linux Host 挂载
+    - Linux Host 挂载
     
         - 在 Linux Host 下将 Windows Guset 的共享目录挂载到 Linux Host 的某个文件夹下面，然后 cd 到这个文件夹下面就可以访问 share 目录了
         

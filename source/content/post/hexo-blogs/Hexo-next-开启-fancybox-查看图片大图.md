@@ -7,13 +7,13 @@ tags:
     - Hexo
 ---
 
-##### 修改主题配置文件
+- 修改主题配置文件
 
-- 开启 fancybox开关即可
-
-    ```yml
-    # FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.
-    # For more information: https://fancyapps.com/fancybox
-    fancybox: true
-    ```
+    - 开启 fancybox开关即可
+    
+        ```yml
+        # FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.
+        # For more information: https://fancyapps.com/fancybox
+        fancybox: true
+        ```
 

@@ -8,9 +8,11 @@ tags:
 
 **建立分类**<!--more-->
 1. 输入 hexo new page 'categories'
-######  
+
+  
 2. 在顶层工程目录的 source 目录中會看到 categories 文件夹
-######   
+
+   
 3. 修改 categories 中的 index.md 开头，增加一些东西使得变成如下内容
 
 	```markdown
@@ -33,16 +35,20 @@ tags:
 
     ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.19.31.09.png)
 
-######   
+
+   
 
 **建立标签**
 
 和建立分类一样，只不过内容改变一点
-######   
+
+   
 1. 输入 hexo new page 'tags'
-######   
+
+   
 2. 在顶层工程目录的 source 目录中會看到 tags 文件夹
-######   
+
+   
 3. 修改 tags 中的 index.md 开头，增加一些东西使得变成如下内容
 	```
 	---
@@ -84,7 +90,8 @@ tags:
 
     ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.19.55.54.png)
 
-######  
+
+  
 2. 把要插入的图片文件放到该目录下面，在文档中正常使用 markdown 的语法插入图片即可，例如
 
 	```

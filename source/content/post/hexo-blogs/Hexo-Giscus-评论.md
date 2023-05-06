@@ -7,20 +7,20 @@ tags:
     - Giscus
 ---
 
-##### 详情请参考官方网站
+- 详情请参考官方网站
 
-- Giscus 官方网站
-    ```url
-    https://giscus.app/zh-CN
-    ```
-
-
-- Hexo-next-giscus 官方仓库
-
-    ```url
-    https://github.com/next-theme/hexo-next-giscus
-    ```
+    - Giscus 官方网站
+        ```url
+        https://giscus.app/zh-CN
+        ```
     
+    
+    - Hexo-next-giscus 官方仓库
+    
+        ```url
+        https://github.com/next-theme/hexo-next-giscus
+        ```
+        
 - 参考的博客，不保证链接长期有效
 
     ```url

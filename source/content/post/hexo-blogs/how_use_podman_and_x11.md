@@ -6,11 +6,11 @@ tags:
     - Podman 
 ---
 
-### podman 运行 GUI 应用
+**podman 运行 GUI 应用**
 
-1. ##### 首先 host 的环境，也就是宿主机的桌面环境得是 X11 ，Wayland 是不行的
+1. 首先 host 的环境，也就是宿主机的桌面环境得是 X11 ，Wayland 是不行的
 
-2. ##### 允许 podman 访问 xserver
+2. 允许 podman 访问 xserver
 
     在 host 上运行
     
@@ -20,7 +20,7 @@ tags:
     
     如果不行，那就加 sudo 试一下
     
-3. ##### 创建并且启动 podman 容器
+3. 创建并且启动 podman 容器
 
     这个建议在 rootless 下执行，在 Arch Linux 下测试是可以 rootless 运行这条命令的
     
@@ -35,7 +35,7 @@ tags:
     ubuntu 是你需要的 image 名称，可以换成其他的名称
     
     
-4. ##### 安装 X11 应用并测试
+4. 安装 X11 应用并测试
 
     完成第三步之后，就已经自动进入到容器交互界面里面了
     

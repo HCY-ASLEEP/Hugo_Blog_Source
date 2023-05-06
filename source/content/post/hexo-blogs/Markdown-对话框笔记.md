@@ -6,7 +6,7 @@ tags:
     - Markdown
 ---
 
-### 只有左右框
+**只有左右框**
 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.11.05.21.09.58.png)
 
@@ -21,7 +21,6 @@ tags:
 </div>
 </div>
 
-###### 
 
 <div align="left">
 <div style="width:47%; border-style:solid; border-width:1px; border-radius:15px">
@@ -35,7 +34,7 @@ tags:
 
 <br/>
 
-### 带有箭头的左右框
+**带有箭头的左右框**
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.11.07.17.19.38.png)
 
 <br/>

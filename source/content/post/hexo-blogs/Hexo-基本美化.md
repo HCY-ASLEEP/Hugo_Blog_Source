@@ -17,18 +17,22 @@ tags:
 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.16.19.21.png)
 
-###### 
+
+ 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.16.22.22.png)
 
-######
+
+
 **定义自己的信息**，定义在顶层工程目录的 "_config.yml" 里面
 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.16.25.30.png)
 
-###### 
+
+ 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.16.27.38.png)
 
-######
+
+
 **美化代码块**，原本的代码块没有 margin-left 和 margin-right ，不好看
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.16.29.42.png)
 
@@ -36,7 +40,8 @@ tags:
 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.16.32.39.png)
 
-###### 
+
+ 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.16.33.18.png)
 
 这两个 css 文件是一样的，要修改的地方也一样
@@ -51,7 +56,8 @@ tags:
 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.16.38.27.png)
 
-######
+
+
 **最终效果**
 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/2022.10.23.16.41.32.png)
