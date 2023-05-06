@@ -190,7 +190,7 @@ tags:
 		- **vm_memory_requirement (int)** ：传入的 VM Request 请求的内存资源大小
 		- **remaining_buffer_time（int）** ：当使用 remaining_buffer_time 时，VM Request 将被视为失败，可以在 config.yml 里面设置
 
-- #### Action
+- **Action**
 	
 	- 从环境中获取 PendingDecisionAction 事件后，代理应使用 Action 进行响应，以下是有效的 Action
 		

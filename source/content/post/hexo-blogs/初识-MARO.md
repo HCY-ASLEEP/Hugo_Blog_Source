@@ -5,7 +5,7 @@ tags:
     - MARO
 ---
 ### [MARO ，“Multi-Agent-Resource Optimization” ](https://github.com/microsoft/maro)<!--more-->，中文是“多代理资源优化” ，使用强化学习来解决资源调度的一个平台
-#### 可以应用 MARO 的实际例子：
+**可以应用 MARO 的实际例子：**
 
 - CIM,"Container Inventory Management",中文是“集装箱库存管理”。全球贸易里面会有很多港口，但是每个港口需要的空集装箱都不一样，有的港口可能空集装箱是剩余的（比如进口向港口），有的港口可能空集装箱不够（比如出口向港口）
 	- 而使用 MARO 可以解决这个问题，使得每个港口尽可能分配到恰当的空集装箱资源，不多不少。
@@ -32,7 +32,7 @@ tags:
 	- 出口导向型港口（例如中国的港口）显示出明显的高需求特征，通常需要额外的空集装箱供应，这些港口将倾向于从船上卸载空集装箱
 	- 虽然以进口为导向的港口具有显著的盈余特征，但通常从收货人那里收到许多空集装箱，因此，如果存在空闲容量，面向进口的港口将倾向于将多余的空集装箱装入船舶
 ######
-- #### 简单拓扑结构
+- **简单拓扑结构:**
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/cim.toys.svg)
 - 这里要特别注意上面这个图里面，这里的 S 和 D 并不是 source 和 destination，而是 empty containers 的 supplier 和 demander，这里 order 也并不是货物订单，而是 empty containers 的订单
 - 上图实线表示货物流向，虚线表示订单流向，S 与 D 由订单（Order）决定，订单发起方为 D，订单收到方为 S
@@ -43,7 +43,7 @@ tags:
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/cim.global_trade.svg)
 - 这是基于真实世界数据设计的拓扑,大多数港口不再具有简单的供需功能。港口之间的合作要复杂得多，很难手动找到有效的重新定位策略
 ######
-- #### 入门
+- **入门:**
 - 安装
 ```python
 pip install pymaro
@@ -64,7 +64,7 @@ pip install pymaro
 	- 数量（int）：要装载/卸载的空容器的（非负）数量
 ######
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/maro_overview.svg)
-- #### 上图是 MARO 框架图
+- **上图是 MARO 框架图**
 	- Simulation toolkit：它提供了一些预定义的场景，以及用于构建新场景的可重用轮子
 	- RL toolkit：它为 RL 提供了全栈抽象，例如代理管理器、代理、RL 算法、学习器、参与者和各种塑造者
 	- Distributed toolkit：提供分布式通信组件、消息自动处理、集群配置、作业编排等用户定义功能的接口
