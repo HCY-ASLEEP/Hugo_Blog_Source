@@ -10,7 +10,7 @@ tags:
 
 </br> 
 
-#### 接下来展示的是第三层 Distibuted toolkit
+**接下来展示的是第三层 Distibuted toolkit**
 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/overview.svg)
 
@@ -28,13 +28,13 @@ tags:
 
 </br> 
 
-#### 关键部件
+**关键部件**
 
 ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/key_components.svg) 
 
-- ##### Comunication
+- **Comunication**
 
-	- ##### 大致功能预览
+	- 大致功能预览
 
 		- 提供通用的消息传递接口
 			
@@ -59,7 +59,7 @@ tags:
 
 	</br> 
 
-	- #####  Proxy 
+	- **Proxy** 
 		
 		![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/proxy.svg)
 
@@ -231,7 +231,7 @@ tags:
 
 	</br> 
 
-	- ##### MARO 通信原语实际接口
+	- **MARO 通信原语实际接口**
 
 			
 		- receive：用于持续接收消息
@@ -245,7 +245,7 @@ tags:
 
 	</br> 
 	
-	- ##### Conditional Event Register Table
+	- **Conditional Event Register Table**
 	
 		- 提供消息自动发送机制
 		- 通过将 conditional event 和相关的 handler function 注册到注册表中，当 conditional event 满足时，handler function 将与接收到的消息一起自动执行
@@ -304,7 +304,7 @@ tags:
 
 	</br> 
 
-	- ##### Distributed Decorator
+	- **Distributed Decorator**
 
 		- 从本地函数类生成分布式 worker 类的帮助程序
 			

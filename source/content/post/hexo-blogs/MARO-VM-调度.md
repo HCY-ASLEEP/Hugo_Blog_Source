@@ -179,7 +179,7 @@ tags:
 
 ### Environment Interface
 
-- #### DecisionPayload
+- **DecisionPayload**
 	
 	- 一旦环境需要代理的响应来促进模拟，它就会抛出一个带有 DecisionPayload 的 PendingDecision 事件
 	- DecisionPayload 包含以下信息

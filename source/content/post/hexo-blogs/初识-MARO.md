@@ -49,13 +49,13 @@ tags:
 pip install pymaro
 ```
 - MARO 算法有两个关键步骤
-- ###### 算法决策事件 DecisionEventDecisionEvent
+- 算法决策事件 DecisionEventDecisionEvent
 	- tick (int)：相应的刻度
 	- port_idx（int）：需要响应环境的端口/代理的 ID
 	- vessel_idx（int）：港口/代理人的船舶/操作对象的 ID
 	- action_scope（操作范围）：操作范围有两个属性，load表示可以从船舶港口装载的最大数量，discharge表示从船舶到港口可以卸货的最大数量
 	- early_discharge（int）：当船上的可用容量不足以装载满载物时，船上的一些空容器将被提前卸货以释放空间，由于满载而提前卸货的空容器数量记录在该字段中
-- ###### 行动 Action
+- 行动 Action
 	- none，这意味着什么都不做
 	- a valid instance，有效实例：
 	- vessel_idx（int）：港口/代理人的船舶/操作对象的 ID
