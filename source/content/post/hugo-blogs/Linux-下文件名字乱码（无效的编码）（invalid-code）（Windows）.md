@@ -1,12 +1,12 @@
 ---
-title: "Linux 下文件名字乱码（无效的编码）（invalid Code）（Windows）"
+title: "Linux 下文件名字乱码（无效的编码）（invalid encoding）（Windows）"
 date: 2023-05-17T17:13:58+08:00
 tags:
     - Linux
 draft: false
 ---
 
-文件是在Windows 下创建的，Windows 的文件名中文编码默认为GBK，而Linux中默认文件名编码为UTF8，由于编码不一致所以导致了文件名乱码的问题，解决这个问题需要对文件名进行转码
+文件是在 Windows 下创建的，Windows 的文件名中文编码默认为 GBK ，而 Linux 中默认文件名编码为 UTF8，由于编码不一致所以导致了文件名乱码的问题，解决这个问题需要对文件名进行转码
 
 安装 convmv
 
