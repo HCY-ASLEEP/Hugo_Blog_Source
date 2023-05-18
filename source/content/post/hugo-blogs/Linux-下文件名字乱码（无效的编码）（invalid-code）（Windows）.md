@@ -8,7 +8,7 @@ draft: false
 
 文件是在 Windows 下创建的，Windows 的文件名中文编码默认为 GBK ，而 Linux 中默认文件名编码为 UTF8，由于编码不一致所以导致了文件名乱码的问题，解决这个问题需要对文件名进行转码
 
-安装 convmv
+安装 convmv ：
 
 ```bash
 sudo apt-get install convmv
