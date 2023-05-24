@@ -1,5 +1,5 @@
 ---
-title: "Vim ripgrep quickfix netrw nmap autocmd wincmd 。。。大杂烩？！"
+title: "Vim ripgrep quickfix netrw nmap autocmd wincmd 。。。大杂烩 ？！"
 date: 2023-05-24T13:51:22+08:00
 tags:
     - VIM
