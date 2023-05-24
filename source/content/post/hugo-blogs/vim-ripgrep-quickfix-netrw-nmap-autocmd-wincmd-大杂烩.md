@@ -49,11 +49,11 @@ tags:
 
         👉 [https://github.com/BurntSushi/ripgrep/issues/425](https://github.com/BurntSushi/ripgrep/issues/425)
         
-        👉 [https://www.reddit.com/r/vim/comments/1rzvsm/do_any_of_you_redirect_results_of_i_to_the/](https://www.reddit.com/r/vim/comments/1rzvsm/do_any_of_you_redirect_results_of_i_to_the/)
+        👉 [https://www.reddit.com/r/vim/comments/](https://www.reddit.com/r/vim/comments/1rzvsm/do_any_of_you_redirect_results_of_i_to_the/)
     
     - 但是这里有一个问题，就是虽然 rg 搜索速度是非常快的，但是将 rg 搜索结果重定向到 quickfix 里面是非常慢的，应为填充 quickfix 的时候，vimscript 会把每一行切割成一段一段的字典数据，以方便文字高亮着色还有后续跳转，在 Vim 普通模式下 :h cexpr 就可以知道原理了
     
-        👉 [https://www.reddit.com/r/vim/comments/e6xw03/ripgrep_is_slow_when_using_grepprg_inside_vim_but/](https://www.reddit.com/r/vim/comments/e6xw03/ripgrep_is_slow_when_using_grepprg_inside_vim_but/)
+        👉 [https://www.reddit.com/r/vim/comments/](https://www.reddit.com/r/vim/comments/e6xw03/ripgrep_is_slow_when_using_grepprg_inside_vim_but/)
 
 </br>
     
@@ -86,9 +86,9 @@ tags:
         let l:findWinId=win_getid(l:findWinNum)
         ```
     
-        👉 [https://vi.stackexchange.com/questions/23271/set-option-on-window-without-going-to-the-window-and-come-back](https://vi.stackexchange.com/questions/23271/set-option-on-window-without-going-to-the-window-and-come-back)
+        👉 [https://vi.stackexchange.com/questions/23271/](https://vi.stackexchange.com/questions/23271/set-option-on-window-without-going-to-the-window-and-come-back)
         
-        👉 [https://vi.stackexchange.com/questions/26602/how-to-scroll-in-another-window-without-switching-to-it](https://vi.stackexchange.com/questions/26602/how-to-scroll-in-another-window-without-switching-to-it)
+        👉 [https://vi.stackexchange.com/questions/26602/](https://vi.stackexchange.com/questions/26602/how-to-scroll-in-another-window-without-switching-to-it)
     
     - Vim 在 ex （命令模式里面跳转到具体的某行某列）需要使用 cal 命令，如跳转到第 30 行的第 5 列：
     
@@ -96,7 +96,7 @@ tags:
         cal cursor(30, 5)
         ```
         
-        👉 [https://stackoverflow.com/questions/11767956/how-do-i-move-the-cursor-to-a-specific-row-and-column](https://stackoverflow.com/questions/11767956/how-do-i-move-the-cursor-to-a-specific-row-and-column)    
+        👉 [https://stackoverflow.com/questions/11767956/](https://stackoverflow.com/questions/11767956/how-do-i-move-the-cursor-to-a-specific-row-and-column)    
     
     - Vim 允许设置 buffer 的文件类型（filetype）：
         
@@ -112,7 +112,7 @@ tags:
         
     - 这个 filetype 属性结合 nnoremap \<buffer\> 就可以做到指定某一个 buffer setlocal cursorline (Buffer local mappings in Vim) (vim map in specific window)
     
-        👉 [https://stackoverflow.com/questions/7985813/buffer-local-mappings-in-vim-buffer-vs-localleader](https://stackoverflow.com/questions/7985813/buffer-local-mappings-in-vim-buffer-vs-localleader)
+        👉 [https://stackoverflow.com/questions/7985813/](https://stackoverflow.com/questions/7985813/buffer-local-mappings-in-vim-buffer-vs-localleader)
     
     - 我将 rg 整合进 neovim 之后的代码如下：
     
@@ -357,7 +357,7 @@ vim 的历史命令文件位于 ~/.viminfo ，而 neovim 的位于
 ~/local/share/nvim/shada/main.shada：
 ```
 
-👉 [https://www.reddit.com/r/neovim/comments/5con51/where_is_neovims_viminfo_located/](https://www.reddit.com/r/neovim/comments/5con51/where_is_neovims_viminfo_located/)
+👉 [https://www.reddit.com/r/neovim/comments/](https://www.reddit.com/r/neovim/comments/5con51/where_is_neovims_viminfo_located/)
 
 </br>
 
@@ -365,4 +365,4 @@ vim 的历史命令文件位于 ~/.viminfo ，而 neovim 的位于
 
 How to set selected directory as current in vim (netrw)? 只需要把光标放在 netrw 里面你想设置的目录下面，然后执行 :Ntree 命令就行
 
-👉 [https://stackoverflow.com/questions/33542513/how-to-set-selected-directory-as-current-in-vim-netrw](https://stackoverflow.com/questions/33542513/how-to-set-selected-directory-as-current-in-vim-netrw)
+👉 [https://stackoverflow.com/questions/33542513/](https://stackoverflow.com/questions/33542513/how-to-set-selected-directory-as-current-in-vim-netrw)
