@@ -44,3 +44,12 @@
 .archive-year:not(:last-of-type) {
     border-bottom: 1px solid rgb(190 190 190);
 }
+
+.first-entry {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0px;
+    margin: var(--gap)0 calc(var(--gap) * 2);
+}
