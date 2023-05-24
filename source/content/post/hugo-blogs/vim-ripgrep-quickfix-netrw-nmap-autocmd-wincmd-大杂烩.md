@@ -51,7 +51,7 @@ tags:
         
         👉 [https://www.reddit.com/r/vim/comments/](https://www.reddit.com/r/vim/comments/1rzvsm/do_any_of_you_redirect_results_of_i_to_the/)
     
-    - 但是这里有一个问题，就是虽然 rg 搜索速度是非常快的，但是将 rg 搜索结果重定向到 quickfix 里面是非常慢的，应为填充 quickfix 的时候，vimscript 会把每一行切割成一段一段的字典数据，以方便文字高亮着色还有后续跳转，在 Vim 普通模式下 :h cexpr 就可以知道原理了
+    - 但是这里有一个问题，就是虽然 rg 搜索速度是非常快的，但是将 rg 搜索结果重定向到 quickfix 里面是非常慢的，因为填充 quickfix 的时候，vimscript 会把每一行切割成一段一段的字符串，然后字典化（也就是给每一段加上 key），以方便文字高亮着色还有后续跳转，在 Vim 普通模式下 :h cexpr 就可以知道原理了
     
         👉 [https://www.reddit.com/r/vim/comments/](https://www.reddit.com/r/vim/comments/e6xw03/ripgrep_is_slow_when_using_grepprg_inside_vim_but/)
 
