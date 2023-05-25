@@ -69,19 +69,19 @@
 .post-content :not(table) ::-webkit-scrollbar-thumb:vertical{
     max-height: 10px; 
     border: 5px solid var(--hljs-bg);
-    background: #D6D6D6;
+    background: rgb(120 120 120 / 80%);
     border-radius: var(--radius);
 }
 
 .post-content :not(table) ::-webkit-scrollbar-thumb:horizontal {
     border: 2px solid var(--hljs-bg);
-    background: #D6D6D6;
+    background: rgb(120 120 120 / 80%);
 }
 
 ::-webkit-scrollbar-thumb:vertical{
     max-height: 10px; 
     border: 5px solid var(--hljs-bg);
-    background: #D6D6D6;
+    background: rgb(120 120 120 / 80%);
     border-radius: var(--radius);
 }
 
