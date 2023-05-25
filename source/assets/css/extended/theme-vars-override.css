@@ -54,3 +54,13 @@
     min-height: 0px;
     margin: var(--gap)0 calc(var(--gap) * 2);
 }
+
+/* 设置过长代码块可以滚动 */
+.post-content .highlight:not(table) {
+    margin: 10px auto;
+    background: var(--hljs-bg)!important;
+    border-radius: var(--radius);
+    direction: ltr;
+    max-height: 400px; 
+    overflow-y: auto; 
+}
