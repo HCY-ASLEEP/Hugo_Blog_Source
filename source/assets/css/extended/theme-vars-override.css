@@ -64,3 +64,38 @@
     max-height: 400px; 
     overflow-y: auto; 
 }
+
+/* 以下三个都是滚动条的样式 */
+.post-content :not(table) ::-webkit-scrollbar-thumb:vertical{
+    max-height: 10px; 
+    border: 5px solid var(--hljs-bg);
+    background: #D6D6D6;
+    border-radius: var(--radius);
+}
+
+.post-content :not(table) ::-webkit-scrollbar-thumb:horizontal {
+    border: 2px solid var(--hljs-bg);
+    background: #D6D6D6;
+}
+
+::-webkit-scrollbar-thumb:vertical{
+    max-height: 10px; 
+    border: 5px solid var(--hljs-bg);
+    background: #D6D6D6;
+    border-radius: var(--radius);
+}
+
+/* copy code buttom 的样式 */
+.copy-code {
+    display: none;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: rgb(255 255 255 / 80%);
+    background: rgb(120 120 120 / 80%);
+    border-radius: var(--radius);
+    padding: 0 5px;
+    font-size: 14px;
+    font-weight: bold; 
+    user-select: none;
+}
