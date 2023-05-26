@@ -66,14 +66,18 @@ table {
     word-break: keep-all;
 }
 
-/* 以下两个都是滚动条的样式 */
+/* 以下三个都是滚动条的样式 */
 ::-webkit-scrollbar-corner{
     background: transparent; 
 }  
 
 .post-content :not(table) ::-webkit-scrollbar-thumb {
     border: 2px solid var(--hljs-bg);
-    background: #D6D6D6;
+    background: var(--tertiary);
+}
+
+.post-content :not(table) ::-webkit-scrollbar-track-piece {
+    background: var(--code-bg);
 }
 
 /* copy code buttom 的样式 */
@@ -82,8 +86,9 @@ table {
     position: absolute;
     top: 9px;
     right: 20px;
-    color: rgb(255 255 255 / 90%);
-    background: rgb(163 163 165 / 80%);
+    color: var(--secondary);
+    /*background: rgb(163 163 165 / 80%);*/
+    background: var(--tertiary); 
     border-radius: var(--radius);
     padding: 0 5px;
     font-size: 14px;
@@ -91,3 +96,10 @@ table {
     user-select: none;
 }
 
+::-webkit-scrollbar-track-piece{
+    background: var(--theme); 
+}
+
+.list::-webkit-scrollbar-track-piece{
+    background: var(--code-bg); 
+}
