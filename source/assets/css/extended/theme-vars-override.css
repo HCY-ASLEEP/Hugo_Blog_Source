@@ -62,7 +62,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     overflow-x: auto;
-    overflow-y: scroll; 
+    overflow-y: auto; 
     word-break: keep-all;
 }
 
@@ -71,12 +71,17 @@ table {
     background: transparent; 
 }  
 
+.post-content :not(table) ::-webkit-scrollbar {
+    border-radius: var(--radius);
+}
+
 .post-content :not(table) ::-webkit-scrollbar-thumb {
     border: 2px solid var(--hljs-bg);
     background: var(--tertiary);
 }
 
 .post-content :not(table) ::-webkit-scrollbar-track-piece {
+    border-radius: var(--radius);
     background: var(--code-bg);
 }
 
@@ -85,7 +90,7 @@ table {
     display: none;
     position: absolute;
     top: 9px;
-    right: 20px;
+    right: 21px;
     color: var(--secondary);
     /*background: rgb(163 163 165 / 80%);*/
     background: var(--tertiary); 
@@ -103,3 +108,4 @@ table {
 .list::-webkit-scrollbar-track-piece{
     background: var(--code-bg); 
 }
+
