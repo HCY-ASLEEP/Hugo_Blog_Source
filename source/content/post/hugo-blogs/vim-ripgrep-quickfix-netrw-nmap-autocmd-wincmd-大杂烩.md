@@ -354,7 +354,7 @@ tags:
 vim 的历史命令文件位于 ~/.viminfo ，而 neovim 的位于 
 
 ```bash
-~/local/share/nvim/shada/main.shada：
+~/local/share/nvim/shada/main.shada
 ```
 
 👉 [https://www.reddit.com/r/neovim/comments/](https://www.reddit.com/r/neovim/comments/5con51/where_is_neovims_viminfo_located/)
