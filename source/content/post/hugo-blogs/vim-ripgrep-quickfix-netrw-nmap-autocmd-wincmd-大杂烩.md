@@ -13,6 +13,10 @@ tags:
 
 👉 [https://segmentfault.com/q/1010000040349668](https://segmentfault.com/q/1010000040349668)
 
+或者直接映射相关的键位，参考官方 Github 的 Readme
+
+👉 [https://github.com/neoclide/coc.nvim/commit/](https://github.com/neoclide/coc.nvim/commit/624549dab287bd63ef7525d85fbf145669dc3b03)
+
 </br>
     
 ### 2. Vim f和t的快捷方式
