@@ -11,7 +11,7 @@ tags:
 
 👉 [https://github.com/mit-pdos/xv6-riscv](https://github.com/mit-pdos/xv6-riscv)
 
-这个是我所做过的终端交互程序移植改动以及之前 SZU OS 课程在 xv6 上面所做的一些实验：
+这是我所做过的移植交互程序及之前 SZU OS 课程在 xv6 上面做的一些实验：
 
 👉 [我对 xv6-riscv 的一些改动](https://github.com/HCY-ASLEEP/szu-xv6-riscv-adapted/commits?author=HCY-ASLEEP)
 
