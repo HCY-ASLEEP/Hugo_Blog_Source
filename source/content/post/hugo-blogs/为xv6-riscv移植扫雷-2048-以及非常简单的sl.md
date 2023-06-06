@@ -86,7 +86,7 @@ int main()
 有了 2048 移植之后的功能库，扫雷的移植就非常简单了，修改 Makefile 和添加 minesweeper 的实现就行，具体参考这个 👉 [commit](https://github.com/HCY-ASLEEP/szu-xv6-riscv-adapted/commit/83ef9c619f57e7651f9eecd77960b88a5cba6e10)
 
 ### "移植"小火车 sl
-最后是一个非常简陋的小火车 sl ，这不能说是移植，应该说是我模仿 sl 👉 [官方仓库](https://github.com/mtoyoda/sl) 结合能够用的库自己实现的，没有 ioctl 系统调用是真的痛啊！本来想参考 👉 [nyuichi/xv6](https://github.com/nyuichi/xv6) 移植这个 ioctl 系统调用的，但是 xv6-riscv 的接口与 xv6-x86 的内核接口差别有点大，有点超出能力范围之内了。。。小火车具体实现参考这个 👉 [commit](https://github.com/nyuichi/xv6)
+最后是一个非常简陋的小火车 sl ，这不能说是移植，应该说是我模仿 sl 👉 [官方仓库](https://github.com/mtoyoda/sl) 结合能够用的库自己实现的，没有 ioctl 系统调用是真的痛啊！本来想参考 👉 [nyuichi/xv6](https://github.com/nyuichi/xv6) 移植这个 ioctl 系统调用的，但是 xv6-riscv 的接口与 xv6-x86 的内核接口差别有点大，有点超出能力范围之内了。。。小火车具体实现参考这个 👉 [commit](https://github.com/HCY-ASLEEP/szu-xv6-riscv-adapted/commit/f052e7cdc836ecec843aec1d110b7c8f0ab664f2)
 
 ### End
 
