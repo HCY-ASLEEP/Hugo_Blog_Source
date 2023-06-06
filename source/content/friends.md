@@ -11,7 +11,7 @@ date: 2023-02-11 05:31:53
 </div></div><br/>
 </a>
 
-<a href="https://steve-1936550490.github.io/hiddenblue.github.io">
+<a href="https://steve-1936550490.github.io/">
 <div align="right"><div style="width: 60%; border-style: solid; border-width: 1px; border-radius: 16px; position: relative; padding:30px; text-align:center">
 瀚 : 熱烈に歓迎する！
 </div></div><br/>
