@@ -13,9 +13,9 @@ tags:
 
 这个是我所做过的终端交互程序移植改动以及之前 SZU OS 课程在 xv6 上面所做的一些实验：
 
-### 2048 移植以及相关移植准备
-
 👉 [我对 xv6-riscv 的一些改动](https://github.com/HCY-ASLEEP/szu-xv6-riscv-adapted/commits?author=HCY-ASLEEP)
+
+### 2048 移植以及相关移植准备
 
 终端交互移植最关键的就是要把缺失的库函数都补完，首先就得增加和改进 xv6-riscv 原有的终端交互相关的库
 
