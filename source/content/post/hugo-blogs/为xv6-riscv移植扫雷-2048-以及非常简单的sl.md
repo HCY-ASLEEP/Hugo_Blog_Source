@@ -1,5 +1,5 @@
 ---
-title: "为 xv6-iscv 移植扫雷(minesweeper) 2048 以及非常简单的 sl"
+title: "为 xv6-riscv 移植扫雷(minesweeper) 2048 以及非常简单的 sl"
 date: 2023-06-06T13:59:46+08:00
 tags: 
     - Xv6
