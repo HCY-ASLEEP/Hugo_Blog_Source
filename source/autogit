@@ -1,4 +1,3 @@
-hugo
 cd $(dirname $0)
 cur=`date +%Y-%m-%d\ \|\ %H-%M-%S`
 git add -A
