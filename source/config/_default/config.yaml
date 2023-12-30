@@ -9,7 +9,7 @@ buildFuture: true
 buildExpired: false
   
 defaultContentLanguage: zh
-defaultContentLanguageInSubdir: true
+defaultContentLanguageInSubdir: false
 
 googleAnalytics: UA-123-45
 
@@ -169,7 +169,7 @@ disablePathToLower: true
   
 permalinks:
     post: /:slug/
-    page: /:slug/
+      #page: /:slug/
 
 pygmentsOptions: linenos=table
 
