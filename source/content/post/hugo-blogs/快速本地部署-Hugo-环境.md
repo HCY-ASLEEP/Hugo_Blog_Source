@@ -32,6 +32,8 @@ git config --global init.defaultBranch main;\
     git clone https://github.com/adityatelange/hugo-PaperMod.git blogs/source/themes/PaperMod/;\
     mkdir blogs/source/public/;\
     cp blogs/source/autogit blogs/source/public/autogit;
+    sed -i '1 a script_dir=$(pwd)\ncd ..\nhugo\ncd $script_dir' blogs/source/public/autogit;\
+    echo "autogit" >> /blogs/source/public/.gitignore;\
     cd blogs/source/public/;\
     git init;\
     git remote add origin https://github.com/HCY-ASLEEP/HCY-ASLEEP.github.io.git;\
