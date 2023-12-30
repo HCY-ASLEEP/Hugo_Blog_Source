@@ -4,9 +4,9 @@ date: 2023-12-30T11:29:35Z
 draft: false
 ---
 
-#### 进入要存放博客文件的目录之后才可以执行以下指令
+**进入要存放博客文件的目录之后才可以执行以下指令**
 
-#### 拉取Hugo引擎最新版本并在 Debian 系上安装
+**拉取Hugo引擎最新版本并在 Debian 系上安装**
 ```bash
 response=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest);\
     version=$(echo "$response" | jq -r '.tag_name');\
@@ -20,7 +20,7 @@ response=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest);\
     unset download_url
 ```
 
-#### 拉取博客源数据
+**拉取博客源数据**
 ```bash
 git config --global init.defaultBranch main;\
     git config --global user.name "hcy-asleep";\
