@@ -123,24 +123,24 @@ max-width: calc(var(--main-width) + var(--gap) * 10);
 
 /* Increase the default width of the page. */
 .main {
-    max-width: calc(var(--main-width) + var(--gap) * 40);
+    max-width: calc(var(--main-width) + var(--gap) * 15);
     margin-left: auto;
     margin-right: auto;
 }
 
 /* 最顶头那一行的样式 */
 .nav {
-    max-width: calc(var(--main-width) + var(--gap) * 40);
+    max-width: calc(var(--main-width) + var(--gap) * 25);
 }
 
 .post-entry {
-    max-width: calc(var(--main-width) + var(--gap) * 20);
+    max-width: calc(var(--main-width) + var(--gap) * 10);
     margin-left: auto;
     margin-right: auto;
 }
 
 .first-entry {
-    max-width: calc(var(--main-width) + var(--gap) * 20);
+    max-width: calc(var(--main-width) + var(--gap) * 10);
     margin-left: auto;
     margin-right: auto;
 }

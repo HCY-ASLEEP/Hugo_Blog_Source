@@ -25,18 +25,31 @@ apt update;\
     su devenv
 ```
 
+#### 切换到普通用户目录
+```bash
+cd ~;\
+pwd;\
+touch .bashrc
+```
+
 #### 改变 Shell 外观，别名 Neovim ，使用 Shell 代理
 ```bash
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ';\
-    echo "alias iv='nvim ~/.config/nvim/init.vim'" >> ~/.bashrc;\
-    echo "alias v='nvim" >> ~/.bashrc;\
-    alias p='export ALL_PROXY=socks5://127.0.0.1:7897';\
-    alias np='unset ALL_PROXY'
+cat >> .bashrc << EOF
+
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+alias iv='nvim ~/.config/nvim/init.vim'
+alias v='nvim'
+alias p='export ALL_PROXY=socks5://127.0.0.1:7897'
+alias np='unset ALL_PROXY'
+    
+EOF
 ```
 
 #### 拉取最新的 Neovim
 ```bash
-response=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest);\
+cd ~;\
+    source .bashrc;\
+    response=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest);\
     version=$(echo "$response" | jq -r '.tag_name');\
     download_url=$(echo "$response" | jq -r '.assets[0].browser_download_url');\
     echo "--- Neovim version: "$version" ----";\
