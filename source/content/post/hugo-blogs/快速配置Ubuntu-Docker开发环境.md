@@ -9,7 +9,7 @@ draft: false
 #### 启动一个 Ubuntu 容器
 ```bash
 xhost +;\
-    podman run -it --net=host -e DISPLAY=$DISPLAY --name=devenv -v /home/hcy/Document/ubuntu/:/home/devenv/ ubuntu /bin/bash
+    podman run -it --net=host -e DISPLAY=$DISPLAY --name=devenv -v /home/hcy/Documents/ubuntu/:/home/devenv/ ubuntu /bin/bash
 ```
 
 #### Ubuntu 容器基本设置
