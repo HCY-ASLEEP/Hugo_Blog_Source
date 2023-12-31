@@ -105,7 +105,7 @@ bash;\
 echo "---- Node.js $latest_version installed ----"
 ```
 
-#### 快速安装 miniconda
+#### 快速安装 miniconda (国内要撤销代理)
 ```bash
 curl https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh;\
     sh ~/miniconda.sh -b;\
@@ -115,6 +115,14 @@ curl https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-L
     sed -i '/# >>> conda initialize >>>/,/# <<< conda initialize <<</d' ~/.bashrc;\
     echo 'alias cab="source ~/.condainit"' >> ~/.bashrc;\
     . ~/.bashrc
+```
+
+#### 安装 vim-language-server
+```url
+https://github.com/iamcco/vim-language-server
+```
+```bash
+npm install -g vim-language-server
 ```
 
 #### 设置容器内输入法变量
