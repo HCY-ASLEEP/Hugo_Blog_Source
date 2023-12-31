@@ -52,7 +52,7 @@
     flex-direction: column;
     justify-content: center;
     min-height: 0px;
-    margin: var(--gap)0 calc(var(--gap) * 2);
+    /*margin: var(--gap)0 calc(var(--gap) * 2);*/
 }
 
 /* 设置过长代码块可以滚动 */
@@ -109,3 +109,84 @@ table {
     background: var(--code-bg); 
 }
 
+
+/* Increase the default width of the page. */
+.main {
+    max-width: calc(var(--main-width) + var(--gap) * 30);
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Increase less for the home page.
+This will eventually replace the following two rules. But for now
+the browser support for :has is not widespread yet.
+.main:has(.first-entry) {
+    max-width: calc(var(--main-width) + var(--gap) * 10);
+}
+*/
+
+.nav {
+    max-width: none;  
+    max-width: calc(var(--main-width) + var(--gap) * 30);
+}
+
+.post-entry {
+    max-width: calc(var(--main-width) + var(--gap) * 10);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-entry {
+}
+
+.first-entry {
+    max-width: calc(var(--main-width) + var(--gap) * 10);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Increase the width of images placed in home info. */
+.home-info .entry-content img {
+    width: 100%;
+    max-width: fit-content;
+    border-radius: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.post-entry .entry-header {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.post-entry .entry-content {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.post-entry .entry-footer {
+    align-self: end;
+    margin-top: 12px; 
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+/* Set a limit on the width of post images and align them center. */
+.post-single .entry-cover {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-content img {
+    margin: auto;
+}
+
+.post-content figcaption {
+  text-align: center;
+}
+
+.giscus{
+    grid-column:1;
+}
