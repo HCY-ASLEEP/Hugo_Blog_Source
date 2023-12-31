@@ -18,7 +18,7 @@
  * the children are placed in the first column. */
 @media (min-width: 1200px) {
     .post-single {
-        grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
+        grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
     }
     .post-single .toc {
         grid-column: 2;
