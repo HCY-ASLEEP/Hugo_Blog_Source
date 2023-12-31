@@ -19,7 +19,7 @@
     .post-single .toc {
         grid-column: 2;
         position: sticky;
-        top: 10px;
+        top: 20px;
     }
 }
 
