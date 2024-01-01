@@ -174,7 +174,14 @@ disablePathToLower: true
   
 permalinks:
     post: /:slug/
-      #page: /:slug/
+    page: /:slug/
 
 pygmentsOptions: linenos=table
+
+build:
+  buildDrafts: true
+    
+archetypes:
+  default:
+      draft: false
 

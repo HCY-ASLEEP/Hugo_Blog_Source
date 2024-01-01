@@ -1,4 +1,2 @@
 hugo new content/post/hugo-blogs/$1.md;\
 nvim content/post/hugo-blogs/$1.md;\
-sed -i 's/draft: true/draft: false/' content/post/hugo-blogs/$1.md
-
