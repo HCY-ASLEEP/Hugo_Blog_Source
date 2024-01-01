@@ -56,7 +56,7 @@
 
 /* 设置过长代码块可以滚动 */
 table {
-    max-height: 400px; 
+/*    max-height: 400px; */
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
@@ -121,6 +121,10 @@ table {
     padding: 10px;
     line-height: 1.5;
     border: 2px solid rgb(179, 182, 183);
+}
+
+.post-content .highlight table {
+    max-height: 400px; 
 }
 
 /* Increase less for the home page.
