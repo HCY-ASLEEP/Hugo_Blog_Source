@@ -127,7 +127,13 @@ table {
     max-height: 400px; 
 }
 
-.paginav .next {
+.paginav .prev{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.paginav .next{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
