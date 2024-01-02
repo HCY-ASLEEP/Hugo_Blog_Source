@@ -39,6 +39,7 @@ cat >> .bashrc << EOF
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 alias iv='nvim ~/.config/nvim/init.vim'
 alias v='nvim'
+alias ls='ls --color'
 alias p='export ALL_PROXY=socks5://127.0.0.1:7897'
 alias np='unset ALL_PROXY'
     
