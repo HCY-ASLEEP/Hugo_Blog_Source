@@ -7,7 +7,7 @@
     --content: rgb(31, 31, 31);
     --hljs-bg: rgb(245, 246, 247);
     --code-bg: rgb(245, 246, 247);
-    --border: rgb(238, 238, 238);
+    --border: rgb(222, 222, 222);
 }
 
 /* 主页的上一页和下一页按钮的样式 */
@@ -127,6 +127,12 @@ table {
     max-height: 400px; 
 }
 
+.paginav .next {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Increase less for the home page.
 This will eventually replace the following two rules. But for now
 the browser support for :has is not widespread yet.
@@ -138,24 +144,24 @@ max-width: calc(var(--main-width) + var(--gap) * 10);
 
 /* Increase the default width of the page. */
 .main {
-    max-width: calc(var(--main-width) + var(--gap) * 15);
+    max-width: calc(var(--main-width) + var(--gap) * 20);
     margin-left: auto;
     margin-right: auto;
 }
 
 /* 最顶头那一行的样式 */
 .nav {
-    max-width: calc(var(--main-width) + var(--gap) * 25);
+    max-width: calc(var(--main-width) + var(--gap) * 30);
 }
 
 .post-entry {
-    max-width: calc(var(--main-width) + var(--gap) * 10);
+    max-width: calc(var(--main-width) + var(--gap) * 15);
     margin-left: auto;
     margin-right: auto;
 }
 
 .first-entry {
-    max-width: calc(var(--main-width) + var(--gap) * 10);
+    max-width: calc(var(--main-width) + var(--gap) * 15);
     margin-left: auto;
     margin-right: auto;
 }

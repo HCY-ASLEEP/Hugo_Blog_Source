@@ -6,11 +6,13 @@
 }
 
 .post-single:not(:has(.toc)){
+    max-width: calc(var(--main-width) + var(--gap) * 5);
+    margin: 0 auto;
     display: block; 
 }
 
 .toc{
-    margin-top: 18px; 
+    margin-top: 20px; 
 }
 
 /* Allocate two columns when there is enough width. *
