@@ -126,6 +126,23 @@ https://github.com/iamcco/vim-language-server
 npm install -g vim-language-server
 ```
 
+#### 安装 pyright language server
+通过 pip 安装
+```bash
+pip install pyright
+```
+
+#### 安装 clangd language server
+直接 apt 安装，但是要想获得真正的补全还要安装 gcc 和 g++
+```bash
+sudo apt install clangd
+```
+
+#### 安装 black python 格式化工具
+```bash
+pip install black
+```
+
 #### 设置容器内输入法变量
 ```bash
 sudo sh -c 'echo "\nexport GTK_IM_MODULE=fcitx\nexport QT_IM_MODULE=fcitx\nexport XMODIFIERS=@im=fcitx\n" >> /etc/bash.bashrc';\
