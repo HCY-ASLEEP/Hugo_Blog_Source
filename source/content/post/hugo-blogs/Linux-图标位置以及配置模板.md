@@ -34,3 +34,15 @@ draft: false
     ~/.config/menus
     ```
 
+#### desktop 文件模板（以 onlyoffice 为例）
+```python
+[Desktop Entry]
+Name=Onlyoffice
+Exec=/opt/only-office/DesktopEditors-x86_64.AppImage
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/only-office/onlyoffice.png
+StartupWMClass="ONLYOFFICE Desktop Editors"
+Comment=Office
+Categories=Office;
+```
