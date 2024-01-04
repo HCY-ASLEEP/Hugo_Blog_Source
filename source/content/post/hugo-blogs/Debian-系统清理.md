@@ -29,7 +29,7 @@ apt-get下载的安装包会保存在/var/cache/apt/archives目录下，在软�
 #### 清理老旧内核
 - 查看系统已安装过的内核（deinstall状态可以卸载，其他的建议保留）
     ```bash
-    dpkg --get-selections | grep linux
+    sudo dpkg --get-selections | grep linux
     ```
 
 - 卸载内核
@@ -40,10 +40,10 @@ apt-get下载的安装包会保存在/var/cache/apt/archives目录下，在软�
 #### 删除残余的配置文件
 - 查看当前残余的配置文件
     ```bash
-    dpkg --list | grep "^rc"
+    sudo dpkg --list | grep "^rc"
     ```
 
 - 删除残余的配置文件
     ```bash
-    dpkg --list | grep "^rc" | cut -d " " -f 3 | xargs sudo dpkg --purge
+    sudo dpkg --list | grep "^rc" | cut -d " " -f 3 | xargs sudo dpkg --purge
     ```
