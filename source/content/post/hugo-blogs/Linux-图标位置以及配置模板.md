@@ -4,7 +4,7 @@ date: 2024-01-03T03:23:39Z
 draft: false
 ---
 
-#### 系统级图标位置
+### 系统级图标位置
 系统级图标通常位于以下目录：
 - 系统默认图标目录
     ```bash
@@ -19,7 +19,7 @@ draft: false
     /usr/share/applications
     ```
     
-#### 用户级图标位置
+### 用户级图标位置
 用户级图标通常位于以下目录：
 - 用户自己添加的图标或自己下载的图标可以放在这个目录下
     ```bash
@@ -34,7 +34,7 @@ draft: false
     ~/.config/menus
     ```
 
-#### desktop 文件模板（以 onlyoffice 为例）
+### desktop 文件模板（以 onlyoffice 为例）
 ```python
 [Desktop Entry]
 Name=Onlyoffice
