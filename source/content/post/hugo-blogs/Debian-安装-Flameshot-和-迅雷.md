@@ -4,7 +4,7 @@ date: 2024-01-07T07:07:48Z
 draft: false
 ---
 
-#### Flameshot
+### Flameshot
 直接从仓库安装 flameshot
 ```bash
 sudo apt install flameshot
@@ -20,13 +20,13 @@ Flameshot 的 GitHub 仓库 Issue 里面有讨论这个问题
 https://github.com/flameshot-org/flameshot/issues/2848
 ```
 
-#### Neovim 剪切板
+### Neovim 剪切板
 和上面的 Flameshot 需要 wl-clipboard 一样，在 X11 环境里面也需要：
 ```bash
 sudo apt install xclip
 ```
 
-#### 迅雷
+### 迅雷
 在优麒麟的仓库里面安装
 ```bash
 https://mirrors.aliyun.com/ubuntukylin/pool/partner/com.xunlei.download_1.0.0.1_amd64.deb
