@@ -11,7 +11,7 @@ https://mirrors.aliyun.com/ubuntukylin/pool/partner/
 ```
 
 ## Deepin 星火商店微信
-### 尝试安装出现依赖问题
+### 尝试安装，出现依赖问题
 直到有一天我刷到知乎里面有一篇文章说 Linux 微信支持语音通话，是星火商店的，于是我去看了以下，官网写的是支持的，星火商店链接：
 ```bash
 https://www.spark-app.store/store/sort/chat
