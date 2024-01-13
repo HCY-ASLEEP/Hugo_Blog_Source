@@ -15,6 +15,20 @@ sudo apt install flameshot
 sudo apt install xdg-desktop-portal xdg-desktop-portal-kde wl-clipboard
 ```
 
+为了让 flameshot 在 wayland 和 x11 下都可以使用剪切板，可以编写一个小脚本：
+```bash
+if [[ $XDG_SESSION_TYPE == "wayland" ]] || [[ -n $WAYLAND_DISPLAY ]]; then
+    flameshot gui -c --raw | wl-copy
+else
+    flameshot gui -c
+fi
+```
+
+将这一个脚本压缩为一行：
+```bash
+[[ $XDG_SESSION_TYPE == "wayland" ]] || [[ -n $WAYLAND_DISPLAY ]] && flameshot gui -c --raw | wl-copy || flameshot gui -c
+```
+
 Flameshot 的 GitHub 仓库 Issue 里面有讨论这个问题
 ```bash
 https://github.com/flameshot-org/flameshot/issues/2848
