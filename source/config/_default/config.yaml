@@ -2,21 +2,16 @@ baseURL: "https://hcy-asleep.github.io/"
 title: Memos
 paginate: 5
 theme: PaperMod
-
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: true
 buildExpired: false
-  
 defaultContentLanguage: zh
 defaultContentLanguageInSubdir: false
-
 googleAnalytics: UA-123-45
-
 minify:
   disableXML: true
   minifyOutput: true
-
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: HCY-BLOGS
@@ -28,7 +23,6 @@ params:
   DateFormat: "January 2, 2006"
   defaultTheme: light # dark, light
   disableThemeToggle: true
-
   ShowReadingTime: true
   ShowShareButtons: false
   ShowPostNavLinks: true
@@ -44,7 +38,6 @@ params:
   hideSummary: false
   showtoc: true
   tocopen: false
-
   assets:
     disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
@@ -53,12 +46,10 @@ params:
     favicon32x32: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
     apple_touch_icon: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
     safari_pinned_tab: "https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/hcy_site_favicon.png"
-
   label:
     text: "主页"
-    icon:     
+    icon:
     iconHeight: 35
-
   # profile-mode
   profileMode:
     enabled: false # needs to be explicitly set
@@ -73,12 +64,10 @@ params:
         url: posts
       - name: Tags
         url: tags
-
   # home-info mode
   homeInfoParams:
-    Title: "Hʌllo~ \U0001F44B"
+    Title: "Hʌllo~ 👋"
     Content: "Welcome to my blog"
-
   socialIcons:
     # - name: twitter
     #   url: "https://twitter.com/"
@@ -88,7 +77,6 @@ params:
       url: "https://github.com/HCY-ASLEEP"
     - name: email
       url: "mailto:2420066864@qq.com"
-
   analytics:
     google:
       SiteVerificationTag: "XYZabc"
@@ -96,17 +84,14 @@ params:
       SiteVerificationTag: "XYZabc"
     yandex:
       SiteVerificationTag: "XYZabc"
-
   cover:
     hidden: true # hide everywhere but not in structured data
     hiddenInList: true # hide on list pages and home
     hiddenInSingle: true # hide on single page
-
   editPost:
     URL: "https://github.com/HCY-ASLEEP"
     Text: " Follow me" # edit text
     appendFilePath: false # to append file path to Edit link
-
   # for search
   # https://fusejs.io/api/options.html
   fuseOpts:
@@ -130,15 +115,15 @@ menu:
     - identifier: search
       name: 🔍
       url: /search/
-      weight: 30   
+      weight: 30
     - identifier: archives
       name: 归档
       url: /archives/
-      weight: 10   
+      weight: 10
     - identifier: about
       name: 关于
       url: /about/
-      weight: 30   
+      weight: 30
     - identifier: friends
       name: 友链
       url: /friends/
@@ -153,35 +138,25 @@ markup:
     guessSyntax: true
     lineNos: true
     # style: emacs
-      
   tableOfContents:
     startLevel: 1
     endLevel: 6
     ordered: false
-      
   goldmark:
     renderer:
       unsafe: true
-
-
 outputs:
-    home:
-        - HTML
-        - RSS
-        - JSON # is necessary
-
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
 disablePathToLower: true
-  
 permalinks:
-    post: /:slug/
-    page: /:slug/
-
+  post: /:slug/
+  page: /:slug/
 pygmentsOptions: linenos=table
-
 build:
   buildDrafts: true
-    
 archetypes:
   default:
-      draft: false
-
+    draft: false
