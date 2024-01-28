@@ -129,7 +129,7 @@ npm install -g vim-language-server
 #### 安装 pyright language server
 通过 pip 安装
 ```bash
-pip install pyright
+npm install -g pyright
 ```
 
 #### 安装 clangd language server
