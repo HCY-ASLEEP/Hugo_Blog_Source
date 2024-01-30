@@ -8,27 +8,27 @@ tags:
     - Linux
 ---
 
+
 1. 首先
 
-    ```bash
-    sudo vim /etc/default/grub
-    ```
-    
+   ```bash
+   sudo vim /etc/default/grub
+   ```
 2. 修改参数保存
 
-    ```bash
-    GRUB_GFXMODE=1920x1080x32
-    ```
+   ```bash
+   GRUB_GFXMODE=1920x1080x32
+   ```
 3. 重新构建 grub
+   - Arch
 
-    - Arch
+     ```bash
+     sudo grub-mkconfig -o /boot/grub/grub.cfg
+     ```
+   - Debian
 
-        ```bash
-        sudo grub-mkconfig -o /boot/grub/grub.cfg
-        ```
-        
-    - Debian
-    
-        ```bash
-        sudo update-grub
-        ```
+     ```bash
+     sudo update-grub
+     ```
+
+

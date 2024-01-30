@@ -16,7 +16,6 @@ tags:
     - 阿里云 http://<你的ID>.mirror.aliyuncs.com
 
 3. 修改为以下内容:
-    
     ```bash
     # 这个是添加 dockerhub 的搜索源
     unqualified-search-registries = ["docker.io"]
