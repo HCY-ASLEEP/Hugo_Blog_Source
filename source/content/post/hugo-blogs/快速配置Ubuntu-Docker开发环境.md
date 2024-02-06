@@ -6,13 +6,15 @@ draft: false
 
 #### 下面指令执行之前建议先挂个代理
 
-#### 启动一个 Ubuntu 容器
+### 启动一个 Ubuntu 容器
+快速创建一个 Ubuntu 容器
 ```bash
 xhost +;\
     podman run -it --net=host -e DISPLAY=$DISPLAY --name=devenv -v /home/hcy/Documents/ubuntu/:/home/devenv/ ubuntu /bin/bash
 ```
 
-#### Ubuntu 容器基本设置
+### Ubuntu 容器基本设置
+基本设置和基本软件
 ```bash
 apt update;\
     apt upgrade -y;\
@@ -25,14 +27,16 @@ apt update;\
     su devenv
 ```
 
-#### 切换到普通用户目录
+### 切换到普通用户目录
+回到家目录
 ```bash
 cd ~;\
 pwd;\
 touch .bashrc
 ```
 
-#### 改变 Shell 外观，别名 Neovim ，配置 Shell 代理
+### 配置 .bashrc
+改变 Shell 外观，别名 Neovim ，配置 Shell 代理
 ```bash
 cat >> .bashrc << EOF
 
@@ -46,14 +50,16 @@ alias np='unset ALL_PROXY'
 EOF
 ```
 
-#### 记得开代理先 `p`
+### 记得开代理先 
+打开代理 `p`
 ```bash
 bash;\
 source ~/.bashrc;\
 p
 ```
 
-#### 拉取最新的 Neovim
+### 拉取最新的 Neovim
+apt 安装的版本很旧，直接 github 拉取最新
 ```bash
 cd ~;\
     source .bashrc;\
@@ -71,17 +77,20 @@ cd ~;\
     source ~/.bashrc
 ```
 
-#### 拉取具有 LSP 的 Neovim 配置
+### 拉取具有 LSP 的 Neovim 配置
+配置有 LSP 的
 ```bash
 curl -sL https://raw.githubusercontent.com/HCY-ASLEEP/NVIM-Config/main/nvim-config.sh | sh
 ```
 
-#### 拉取没有 LSP 的 Neovim 配置
+### 拉取没有 LSP 的 Neovim 配置
+配置没有 LSP 的
 ```bash
 curl -sL https://raw.githubusercontent.com/HCY-ASLEEP/NVIM-Config/main/nvim-config-without-lsp/nvim-config.sh | sh
 ```
 
-#### 拉取最新 Node.js
+### 拉取最新 Node.js
+软件仓库里面也是太旧了，需要拉取最新的
 ```bash
 cd ~;\
 latest_version=$(curl -sL https://nodejs.org/en/download/ | grep -o -E 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n 1);\
@@ -106,7 +115,8 @@ bash;\
 echo "---- Node.js $latest_version installed ----"
 ```
 
-#### 快速安装 miniconda (国内要撤销代理)
+### 快速安装 miniconda (国内要撤销代理)
+清华源安装
 ```bash
 curl https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh;\
     sh ~/miniconda.sh -b;\
@@ -118,7 +128,8 @@ curl https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-L
     . ~/.bashrc
 ```
 
-#### 安装 vim-language-server
+### 安装 vim-language-server
+安装 vimscript LSP
 ```url
 https://github.com/iamcco/vim-language-server
 ```
@@ -126,30 +137,33 @@ https://github.com/iamcco/vim-language-server
 npm install -g vim-language-server
 ```
 
-#### 安装 pyright language server
+### 安装 pyright language server
 通过 pip 安装
 ```bash
 npm install -g pyright
 ```
 
-#### 安装 clangd language server
+### 安装 clangd language server
 直接 apt 安装，但是要想获得真正的补全还要安装 gcc 和 g++
 ```bash
 sudo apt install clangd
 ```
 
-#### 安装 black python 格式化工具
+### 安装 black python 格式化工具
+格式化 python
 ```bash
 pip install black
 ```
 
-#### 设置容器内输入法变量
+### 设置容器内输入法变量
+这个好像对我没有用
 ```bash
 sudo sh -c 'echo "\nexport GTK_IM_MODULE=fcitx\nexport QT_IM_MODULE=fcitx\nexport XMODIFIERS=@im=fcitx\n" >> /etc/bash.bashrc';\
     . /etc/bash.bashrc
 ```
 
-#### Host 的快速指令设置（需要根据实际修改一下）
+### Host 的快速指令设置（需要根据实际修改一下）
+配置 .bashrc
 ```bash
 cat >> .bashrc << EOF
 
