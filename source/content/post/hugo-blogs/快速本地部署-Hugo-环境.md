@@ -37,7 +37,7 @@ git config --global init.defaultBranch main;\
     cd blogs/source/public/;\
     git init;\
     git remote add origin https://github.com/HCY-ASLEEP/HCY-ASLEEP.github.io.git;\
-    curl https://raw.githubusercontent.com/HCY-ASLEEP/HCY-ASLEEP.github.io/main/google188014ab03dc55b7.html -o google188014ab03dc55b7.html;\
+    cp ../google188014ab03dc55b7.html .
     cd ..
 ```
 
