@@ -1,4 +1,5 @@
 cd $(dirname $0)
+cp ./google188014ab03dc55b7.html ./public/google188014ab03dc55b7.html
 cur=`date +%Y-%m-%d\ \|\ %H-%M-%S`
 git add -A
 git commit -m "$cur"
