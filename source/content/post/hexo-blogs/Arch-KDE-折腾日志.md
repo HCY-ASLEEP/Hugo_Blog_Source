@@ -206,7 +206,9 @@ sudo pacman -S fcitx5-chinese-addons
 GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
+INPUT_METHOD=fcitx
 SDL_IM_MODULE=fcitx
+GLFW_IM_MODULE=ibus
 ```
 
 然后配置自动启动，提供以下3种方法，第一个不行，试第2个，然后第3个
