@@ -94,7 +94,7 @@ table {
 .copy-code {
     display: none;
     position: absolute;
-    top: 9px;
+    top: 7px;
     right: 21px;
     color: var(--secondary);
     background: var(--tertiary); 
