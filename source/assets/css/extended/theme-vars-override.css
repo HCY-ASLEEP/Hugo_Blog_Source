@@ -95,7 +95,7 @@ table {
     display: none;
     position: absolute;
     top: 7px;
-    right: 21px;
+    right: 7px;
     color: var(--secondary);
     background: var(--tertiary); 
     border-radius: var(--radius);
