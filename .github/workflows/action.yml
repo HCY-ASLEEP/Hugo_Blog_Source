@@ -35,6 +35,6 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           external_repository: HCY-ASLEEP/HCY-ASLEEP.github.io
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.HCY_TOKEN }}
           publish_dir: ./source/public
           commit_message: ${{ github.event.head_commit.message }}
