@@ -29,6 +29,8 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
+        permissions:
+          contents: write
         # If you're changing the branch from main,
         # also change the `main` in `refs/heads/main`
         # below accordingly.
