@@ -1,6 +1,6 @@
 ---
 title: Podman + X11 环境运行 GUI 程序
-date: 2022.12.30 14:27:15
+date: 2022-12-30 14:27:15
 description: 比较麻烦的一种方法(后面还有一种更加方便的方法)
 tags:
     - Podman 

@@ -1,6 +1,6 @@
 ---
 title: Debian 安装中文环境
-date: 2023.1.3 9:27:15
+date: 2023-01-03 9:27:15
 description: 容器里面可能要先安装 locale
 tags:
     - Linux 
