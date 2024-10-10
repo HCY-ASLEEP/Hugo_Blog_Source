@@ -25,7 +25,7 @@ jobs:
           hugo-version: 'latest'
 
       - name: Build
-        run: hugo -s source/
+        run: hugo -s source/ && cp ./source/google188014ab03dc55b7.html ./source/public/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
