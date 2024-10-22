@@ -1,0 +1,79 @@
+---
+title: "SoK: Sanitizing for Security 论文结构梳理"
+date: 2024-10-22T16:30:00Z
+draft: false
+---
+- Abstract
+- I. Inctrodcution
+- II. Exploit Mitigations vs. Sanitizers
+- III. Low-Level Vulnerabilities
+  - A. Memory Safety Violations
+    - (1) Spatial Safety Violatoins
+    - (2) Temporal Safety Violations
+  - B. Use of Uninitialized Variables
+  - C. Pointer Type Errors
+  - D. Variadic Function Misuse
+  - E. Other Vulnerabilities
+- IV. Bug Finding Techiques
+  - A. Memory Safety Violations
+    - Location-based Access Checkers
+    - Identity-based Access Checkers
+      - (1) Spatial Memory Safety Violations
+        - Red-zone Insertion
+        - Guard Pages
+        - Per-pointer Bounds Tracking
+        - Per-object Bounds Tracking
+      - (2) Temporal Memory Safety Violations
+        - Reuse Delay
+        - Lock-and-key
+        - Dangling Pointer Tagging
+  - B. Use of Uninitailized Variables
+    - Uninitailized Memory Read Detection
+    - Uninitialized Value Use Dectection
+  - C. Pointer Type Errors
+    - Pointer Casting Monitor
+    - Pointer Use Monitor
+  - D. Variadic Function Misuse
+    - Dangerous Format String Detection
+    - Argument Mismatch Detection
+  - E. Other Vulnerabilities
+- V. Program Instumentation
+  - A. Language-level Instrumentation
+  - B. IR-level Instrumentation
+  - C. Binary Instrumentation
+  - D. Library Interposition
+- VI. Metadata Management
+  - A. Object Metadata
+    - Embedded Metadata
+    - Direct-mapped Shadow
+    - Multi-level Shadow
+    - Custom Data Structure
+  - B. Pointer Metadata
+    - Fat Pointers
+    - Tagged Pointers
+    - Disjoint Metadata
+  - C. Static Metadata
+- VII. Driving A Sanitizer
+- VIII. Analysis
+  - A. False Positives
+  - B. False Negatives
+  - C. Incomplete Instrumentation
+  - D. Tread Safety
+  - E. Performance Overhead
+  - F. Memory Overhead
+- IX. Deployment
+  - A. Methodology
+    - Popular Github repositories
+    - Sanitizer web pages
+    - Search trends
+  - B. Findings
+    - AddressSanitizer is the most widely adopted sanitizer
+    - The adoption rate for other LLVM-based sanitizers is lower
+  - C. Deployment Directions
+- X. Future Research And Development Directions
+  - A. Type Error Detection
+  - B. Improving Compatibility
+  - C. Composing Sanitizers
+  - D. Hardware Support
+  - E. Kernel and Bare-Metal Support
+- XI. Conclusion
