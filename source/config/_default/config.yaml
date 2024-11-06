@@ -151,6 +151,8 @@ outputs:
         - HTML
         - RSS
         - JSON # is necessary
+pagination:
+  pagerSize: 5
 disablePathToLower: true
 permalinks:
     post: /:slug/
