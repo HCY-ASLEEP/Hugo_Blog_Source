@@ -13,8 +13,6 @@ minify:
     disableXML: true
     minifyOutput: true
 params:
-    pagination:
-        pagerSize: 5
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     title: HCY-BLOGS
     description: "Welcome"
