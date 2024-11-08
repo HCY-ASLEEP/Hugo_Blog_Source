@@ -5,12 +5,14 @@ draft: false
 ---
 
 <h3>Enter LaTeX Formula 👇</h3>
-<textarea id="latex-input" placeholder="e.g. E = mc^2"></textarea>
-<div id="output" style="border: 1px solid black"></div>
-<br>
+<div style="border: 1px solid gray; border-radius: 50%">
+  <textarea id="latex-input" placeholder="e.g. E = mc^2"></textarea>
+</div>
+<div id="output"></div>
 <h3>Generated HTML Code 👇</h3>
-<br>
-<div id="html-code"></div>
+<div style="min-height: 100px; border: 1px solid gray; border-radius: 50%">
+  <div id="html-code"></div>
+</div>
 <button id="copy-button">🖱️👉 just click here to copy html code 👈</button>
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
