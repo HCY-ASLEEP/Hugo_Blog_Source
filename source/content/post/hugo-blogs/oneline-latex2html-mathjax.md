@@ -8,12 +8,12 @@ draft: false
 <div style="border: 1px solid gray; border-radius: 10px">
   <textarea id="latex-input" placeholder="e.g. E = mc^2" style="margin: 10px"></textarea>
 </div>
-<div id="output"></div>
+<div id="output" style="margin: 10px"></div>
 <h3>Generated HTML Code 👇</h3>
 <div style="min-height: 50px; border: 1px solid gray; border-radius: 10px">
   <div id="html-code" style="margin: 10px"></div>
 </div>
-<div id="copy-button" style="border-radius: 10px; background-color: #00cc66; display: inline-block; margin: 10px">🖱️👉 just click here to copy html code 👈</div>
+<div id="copy-button" style="border-radius: 10px; background-color: #00cc66; display: inline-block; margin-top: 10px; margin-bottom: 10px">🖱️👉 just click here to copy html code 👈</div>
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
