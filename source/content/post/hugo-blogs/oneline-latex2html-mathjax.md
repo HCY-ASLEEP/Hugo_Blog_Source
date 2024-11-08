@@ -13,9 +13,7 @@ draft: false
 <div style="min-height: 50px; border: 1px solid gray; border-radius: 10px">
   <div id="html-code" style="margin: 10px"></div>
 </div>
-<div style="border-radius: 10px; background-color: #00cc66; width: auto; margin: 10px">
-  <button id="copy-button" style="width: auto">🖱️👉 just click here to copy html code 👈</button>
-</div>
+<div id="copy-button" style="border-radius: 10px; background-color: #00cc66; width: auto; margin: 10px">🖱️👉 just click here to copy html code 👈</div>
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
