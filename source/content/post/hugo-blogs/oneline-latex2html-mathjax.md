@@ -13,7 +13,7 @@ draft: false
 <div style="min-height: 50px; border: 1px solid gray; border-radius: 10px">
   <div id="html-code" style="margin: 10px"></div>
 </div>
-<div style="border-radius: 10px; background-color: light-green; width: auto; margin: 10px">
+<div style="border-radius: 10px; background-color: #00cc66; width: auto; margin: 10px">
   <button id="copy-button">🖱️👉 just click here to copy html code 👈</button>
 </div>
 
