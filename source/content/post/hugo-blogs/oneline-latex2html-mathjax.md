@@ -8,7 +8,7 @@ draft: false
 <div style="display: inline-block; border: 1px solid gray; border-radius: 10px">
   <textarea id="latex-input" placeholder="e.g. E = mc^2" style="margin: 10px"></textarea>
 </div>
-<div id="output" style="margin: 10px"></div>
+<div id="output" style="margin: 20px"></div>
 <h3>Generated HTML Code 👇</h3>
 <div style="min-height: 50px; border: 1px solid gray; border-radius: 10px">
   <div id="html-code" style="margin: 10px"></div>
