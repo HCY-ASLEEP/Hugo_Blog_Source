@@ -5,7 +5,7 @@ draft: false
 ---
 
 <h3>Enter LaTeX Formula 👇</h3>
-<div style="border: 1px solid gray; border-radius: 10px">
+<div style="display: inline-block; border: 1px solid gray; border-radius: 10px">
   <textarea id="latex-input" placeholder="e.g. E = mc^2" style="margin: 10px"></textarea>
 </div>
 <div id="output" style="margin: 10px"></div>
