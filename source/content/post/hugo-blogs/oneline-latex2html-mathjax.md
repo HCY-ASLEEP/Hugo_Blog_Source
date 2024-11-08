@@ -6,12 +6,12 @@ draft: false
 
 <h3>Enter LaTeX Formula 👇</h3>
 <div style="border: 1px solid gray; border-radius: 10px">
-  <textarea id="latex-input" placeholder="e.g. E = mc^2"></textarea>
+  <textarea id="latex-input" placeholder="e.g. E = mc^2" style="margin: 10px"></textarea>
 </div>
 <div id="output"></div>
 <h3>Generated HTML Code 👇</h3>
 <div style="min-height: 100px; border: 1px solid gray; border-radius: 10px">
-  <div id="html-code"></div>
+  <div id="html-code" style="margin: 10px"></div>
 </div>
 <button id="copy-button">🖱️👉 just click here to copy html code 👈</button>
 
