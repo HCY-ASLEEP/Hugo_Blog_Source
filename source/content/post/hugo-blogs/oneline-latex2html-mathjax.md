@@ -6,10 +6,10 @@ draft: false
 
 <h3>Enter LaTeX Formula 👇</h3>
 <textarea id="latex-input" placeholder="e.g. E = mc^2"></textarea>
-<div id="output"></div>
-<\br>
+<div id="output" style="border: 1px solid black"></div>
+<br>
 <h3>Generated HTML Code 👇</h3>
-<\br>
+<br>
 <div id="html-code"></div>
 <button id="copy-button">🖱️👉 just click here to copy html code 👈</button>
 
