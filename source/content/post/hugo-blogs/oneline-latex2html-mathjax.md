@@ -1,5 +1,5 @@
 ---
-title: "Online Latex2html Converter By Mathjax"
+title: "Online LaTex2HTML Converter By Mathjax"
 date: 2024-11-08T14:44:13Z
 draft: false
 ---
@@ -14,7 +14,7 @@ draft: false
   <div id="html-code" style="margin: 10px"></div>
 </div>
 <div id="copy-button" style="border-radius: 10px; background-color: #00cc66; display: inline-block; margin-top: 10px; margin-bottom: 10px">
-  🖱️👉 just click here to copy html code 👈🖱️
+  🖱️👉 copy code 👈🖱️
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
