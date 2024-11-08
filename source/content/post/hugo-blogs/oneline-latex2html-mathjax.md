@@ -4,12 +4,14 @@ date: 2024-11-08T14:44:13Z
 draft: false
 ---
 
-<h3>Enter  LaTeX  Formula 👇</h3>
+<h3>Enter LaTeX Formula 👇</h3>
 <textarea id="latex-input" placeholder="e.g. E = mc^2"></textarea>
 <div id="output"></div>
-<h3>Generated  HTML  Code 👇</h3>
+<\br>
+<h3>Generated HTML Code 👇</h3>
+<\br>
 <div id="html-code"></div>
-<button id="copy-button">🖱️👉 Click Here To Copy HTML Code 👈</button>
+<button id="copy-button">🖱️👉 just click here to copy html code 👈</button>
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
