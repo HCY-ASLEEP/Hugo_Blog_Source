@@ -59,7 +59,7 @@ spec 有两种运行模式，一个是 base ，基本模式，一般使用这个
   - `ls ./benchspec/CPU2006/400.perlbench/run/run_base_test_1.0000/`这个目录下可以看到运行日志
 
 ### 看日志
-- 有时候 spec 自带的结果汇总会不完整，因为有些程序有可能被 asan 终止之后在拉起就不被计分了，所有有时候得去日志里面翻找成功运行项目案例的运行时间，在上面提到的那个完整日志里面全局搜索关键字 `success` 就可以了
+- 有时候 spec 自带的结果汇总会不完整，因为有些程序有可能被 asan 终止之后在拉起就不被计分了，所有有时候得去日志里面翻找成功运行项目案例的运行时间，在上面提到的那个完整日志里面全局搜索关键字 `success` 就可以了（忽略大小写）
   - log2excel 脚本，这里是一个简单的将这些 success 项目信息转为 excel 表格的脚本，以及应该喂给这个脚本的 success 数据格式：
     ```
     CC               = /root/asanopt/llvm-4.0.0-project/build/bin/clang    -std=gnu89 -fsanitize=address -fsanitize-recover=address -m64 -g
@@ -184,4 +184,4 @@ spec 有两种运行模式，一个是 base ，基本模式，一般使用这个
     print(f"结果已保存到 {output_file}")
     ```
     
-- 要找出那些编译不成功的项目，只需要在完整日志里面全局搜索关键字 `error building`
+- 要找出那些编译不成功的项目，只需要在完整日志里面全局搜索关键字 `error building`（忽略大小写）
