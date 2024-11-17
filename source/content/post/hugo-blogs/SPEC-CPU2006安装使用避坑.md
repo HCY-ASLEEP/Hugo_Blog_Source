@@ -185,3 +185,146 @@ spec 有两种运行模式，一个是 base ，基本模式，一般使用这个
     ```
     
 - 要找出那些编译不成功的项目，只需要在完整日志里面全局搜索关键字 `error building`（忽略大小写）
+
+### 看结果报告
+
+- 总报告例子：
+  ```yaml
+  Producing Reports
+  mach: default
+    ext: 1
+      size: test
+        set: int
+          format: raw -> /root/spec2006/result/CINT2006.001.test.rsf
+          format: ASCII -> /root/spec2006/result/CINT2006.001.test.txt
+          format: Screen ->
+  
+                                    Estimated                       Estimated
+                  Base     Base       Base        Peak     Peak       Peak
+  Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
+  -------------- ------  ---------  ---------    ------  ---------  ---------
+  400.perlbench      --     6.96           -- S
+  401.bzip2          --     6.18           -- S
+  403.gcc            --     1.33           -- S
+  429.mcf            --     2.05           -- S
+  445.gobmk          --    19.0            -- S
+  456.hmmer          --     3.27           -- S
+  458.sjeng          --     4.78           -- S
+  462.libquantum     --     0.0351         -- S
+  464.h264ref        --    14.0            -- S
+  471.omnetpp        --   393              -- S
+  473.astar          --     8.30           -- S
+  483.xalancbmk      --     0.120          -- S
+   Est. SPECint_base2006                   --
+   Est. SPECint2006                                                   Not Run
+  
+        set: fp
+          format: raw -> /root/spec2006/result/CFP2006.001.test.rsf
+          format: ASCII -> /root/spec2006/result/CFP2006.001.test.txt
+          format: Screen ->
+  
+                                    Estimated                       Estimated
+                  Base     Base       Base        Peak     Peak       Peak
+  Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
+  -------------- ------  ---------  ---------    ------  ---------  ---------
+  410.bwaves                                  NR
+  416.gamess                                  NR
+  433.milc           --      6.52          -- S
+  434.zeusmp                                  NR
+  435.gromacs                                 NR
+  436.cactusADM                               NR
+  437.leslie3d                                NR
+  444.namd           --      9.79          -- S
+  447.dealII                                  NR
+  450.soplex         --      0.024         -- S
+  453.povray         --      0.875         -- S
+  454.calculix                                NR
+  459.GemsFDTD                                NR
+  465.tonto                                   NR
+  470.lbm            --      1.54          -- S
+  481.wrf                                     NR
+  482.sphinx3        --      1.22          -- S
+   Est. SPECfp_base2006                    --
+   Est. SPECfp2006                                                    Not Run
+  ```
+  
+  - `INT` 部分：
+  ```yaml
+        set: int
+          format: raw -> /root/spec2006/result/CINT2006.001.test.rsf
+          format: ASCII -> /root/spec2006/result/CINT2006.001.test.txt
+          format: Screen ->
+  
+                                    Estimated                       Estimated
+                  Base     Base       Base        Peak     Peak       Peak
+  Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
+  -------------- ------  ---------  ---------    ------  ---------  ---------
+  400.perlbench      --     6.96           -- S
+  401.bzip2          --     6.18           -- S
+  403.gcc            --     1.33           -- S
+  429.mcf            --     2.05           -- S
+  445.gobmk          --    19.0            -- S
+  456.hmmer          --     3.27           -- S
+  458.sjeng          --     4.78           -- S
+  462.libquantum     --     0.0351         -- S
+  464.h264ref        --    14.0            -- S
+  471.omnetpp        --   393              -- S
+  473.astar          --     8.30           -- S
+  483.xalancbmk      --     0.120          -- S
+   Est. SPECint_base2006                   --
+   Est. SPECint2006                                                   Not Run
+  ```
+  
+- `FP` 部分：
+  ```yaml
+        set: fp
+          format: raw -> /root/spec2006/result/CFP2006.001.test.rsf
+          format: ASCII -> /root/spec2006/result/CFP2006.001.test.txt
+          format: Screen ->
+  
+                                    Estimated                       Estimated
+                  Base     Base       Base        Peak     Peak       Peak
+  Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
+  -------------- ------  ---------  ---------    ------  ---------  ---------
+  410.bwaves                                  NR
+  416.gamess                                  NR
+  433.milc           --      6.52          -- S
+  434.zeusmp                                  NR
+  435.gromacs                                 NR
+  436.cactusADM                               NR
+  437.leslie3d                                NR
+  444.namd           --      9.79          -- S
+  447.dealII                                  NR
+  450.soplex         --      0.024         -- S
+  453.povray         --      0.875         -- S
+  454.calculix                                NR
+  459.GemsFDTD                                NR
+  465.tonto                                   NR
+  470.lbm            --      1.54          -- S
+  481.wrf                                     NR
+  482.sphinx3        --      1.22          -- S
+   Est. SPECfp_base2006                    --
+   Est. SPECfp2006                                                    Not Run
+  ```
+  
+- **Base** 和 **Peak** 的区别在于编译器优化选项的使用：
+  - **Base**：
+    - 使用一组严格限制的编译器优化选项。
+    - 所有基准测试必须使用相同的优化设置。
+    - 更强调结果的可重复性和一致性。
+  - **Peak**：
+    - 可以为每个基准测试单独选择优化选项。
+    - 更倾向于追求单个基准的最佳性能。
+    - 优化灵活性更高，但可能降低可重复性。
+  
+- **完整解释表格**
+  
+  | **字段**          | **解释**                                                                                     |
+  |--------------------|---------------------------------------------------------------------------------------------|
+  | **Base Ref.**      | 官方标准硬件在 Base 配置下的参考运行时间。                                                    |
+  | **Base Run Time**  | 你的系统在 Base 配置下实际运行该基准所需的时间。                                              |
+  | **Base Ratio**     | 性能比值，`Base Ref. / Base Run Time`，数值越大表示性能越好。                                  |
+  | **Peak Ref.**      | 官方标准硬件在 Peak 配置下的参考运行时间（一般等于 Base Ref.）。                               |
+  | **Peak Run Time**  | 你的系统在 Peak 配置下实际运行该基准所需的时间。                                              |
+  | **Peak Ratio**     | 性能比值，`Peak Ref. / Peak Run Time`，数值越大表示性能越好。                                  |
+ 
