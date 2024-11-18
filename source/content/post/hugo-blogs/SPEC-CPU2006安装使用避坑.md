@@ -439,4 +439,13 @@ runspec --rebuild -c $name -a run -I -l --size $size -n $NUM_RUNS $PROJECT
 - 在这种情况下，将修改过后的spec重新打包再分发是不可以的，在安装这个修改版本的时候会因为 spec 自带的 checksum 而没有办法通过检验
 - 解决方法：
   - 把修改的部分变成 patch
-  - 在安装 spec 完成之后再把 patch 给打上去 
+  - 在安装 spec 完成之后再把 patch 给打上去
+
+### SPEC 官方链接直达
+1. [SPEC CPU 2006 购买](https://www.spec.org/orderretired.html)
+2. [SPEC CPU 2006 官方文档导航](https://www.spec.org/cpu2006/docs/)
+3. [SPEC CPU 2006 安装使用详解，与本文大部分内容重合](https://www.spec.org/cpu2006/docs/install-guide-unix.html)
+4. [SPEC CPU 2006 配制选项详解](https://www.spec.org/cpu2006/docs/config.html)
+5. [SPEC CPU 2006 设计哲学与实现方法](https://www.spec.org/cpu2006/docs/runrules.html)
+6. [SPEC CPU 2006 <runspec> 命令选项详解](https://www.spec.org/cpu2006/docs/runspec.html)
+7. [SPEC CPU 2006 里面各个子项目的介绍，点击进网页之后拉到最下面，或者搜索关键字“Benchmark Documentation”（忽略大小写）](https://www.spec.org/cpu2006/docs/)
