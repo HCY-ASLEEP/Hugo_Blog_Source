@@ -33,9 +33,37 @@ draft: false
     ```
   并且要注入环境变量`ASAN_OPTIONS=halt_on_error=0:detect_leaks=0`
 
+### 配制
+运行 spec 需要指定配制，在配制文件里面要声明 `reportable = 1` 才可以有结果输出
+
 ### 运行模式
 spec 有两种运行模式，一个是 `base` ，基本模式，一般使用这个，一个是 `peak` ，性能模式，测试峰值性能极限
 - 关于这两个关键字的解释，要看下文如何`看结果报告`那一章节
+
+### 运行命令
+```bash
+runspec --rebuild -c $name -a run -I -l --size $size -n $NUM_RUNS $PROJECT
+```
+1. `--rebuild`：每次运行都重新编译，默认行为不是重新编译，而是类似 `make -j`，另外说一点，spec 使用的不是`make`，而是`specmake`
+2. `-c`：指定运行配制（config）
+3. `-a`：指定任务，有以下选项（action）：
+  `- build`
+  `- buildsetup`
+  `- clean`
+  `- clobber`
+  `- configpp`
+  `- scrub`
+  `- report`
+  `- run`
+  `- setup`
+  `- trash`
+  `- validate`
+5. `-I`：忽略任何中断
+6. `-l`：在执行过程中记录输出
+7. `--size`：选择数据集大小 `<test | train | ref>`
+8. `-n`：spec运行的趟数
+9. `$PROJECT`: `<int | fp | all_c | all_cpp | all>`
+
 
 ### Fortran 错误
 - 由于某些项目是有部分使用 fortran 来实现的，所以如果没有安装 gfortran 的时候可能会导致其编译不了，解决方法有二
@@ -250,63 +278,64 @@ spec 有两种运行模式，一个是 `base` ，基本模式，一般使用这�
   ```
   
   - 例子（1）里面的`INT` 部分：
-  ```yaml
-        set: int
-          format: raw -> /root/spec2006/result/CINT2006.001.test.rsf
-          format: ASCII -> /root/spec2006/result/CINT2006.001.test.txt
-          format: Screen ->
-  
-                                    Estimated                       Estimated
-                  Base     Base       Base        Peak     Peak       Peak
-  Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
-  -------------- ------  ---------  ---------    ------  ---------  ---------
-  400.perlbench      --     6.96           -- S
-  401.bzip2          --     6.18           -- S
-  403.gcc            --     1.33           -- S
-  429.mcf            --     2.05           -- S
-  445.gobmk          --    19.0            -- S
-  456.hmmer          --     3.27           -- S
-  458.sjeng          --     4.78           -- S
-  462.libquantum     --     0.0351         -- S
-  464.h264ref        --    14.0            -- S
-  471.omnetpp        --   393              -- S
-  473.astar          --     8.30           -- S
-  483.xalancbmk      --     0.120          -- S
-   Est. SPECint_base2006                   --
-   Est. SPECint2006                                                   Not Run
-  ```
-  
-- 例子（1）的`FP` 部分：
-  ```yaml
-        set: fp
-          format: raw -> /root/spec2006/result/CFP2006.001.test.rsf
-          format: ASCII -> /root/spec2006/result/CFP2006.001.test.txt
-          format: Screen ->
-  
-                                    Estimated                       Estimated
-                  Base     Base       Base        Peak     Peak       Peak
-  Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
-  -------------- ------  ---------  ---------    ------  ---------  ---------
-  410.bwaves                                  NR
-  416.gamess                                  NR
-  433.milc           --      6.52          -- S
-  434.zeusmp                                  NR
-  435.gromacs                                 NR
-  436.cactusADM                               NR
-  437.leslie3d                                NR
-  444.namd           --      9.79          -- S
-  447.dealII                                  NR
-  450.soplex         --      0.024         -- S
-  453.povray         --      0.875         -- S
-  454.calculix                                NR
-  459.GemsFDTD                                NR
-  465.tonto                                   NR
-  470.lbm            --      1.54          -- S
-  481.wrf                                     NR
-  482.sphinx3        --      1.22          -- S
-   Est. SPECfp_base2006                    --
-   Est. SPECfp2006                                                    Not Run
-  ```
+    ```yaml
+          set: int
+            format: raw -> /root/spec2006/result/CINT2006.001.test.rsf
+            format: ASCII -> /root/spec2006/result/CINT2006.001.test.txt
+            format: Screen ->
+    
+                                      Estimated                       Estimated
+                    Base     Base       Base        Peak     Peak       Peak
+    Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
+    -------------- ------  ---------  ---------    ------  ---------  ---------
+    400.perlbench      --     6.96           -- S
+    401.bzip2          --     6.18           -- S
+    403.gcc            --     1.33           -- S
+    429.mcf            --     2.05           -- S
+    445.gobmk          --    19.0            -- S
+    456.hmmer          --     3.27           -- S
+    458.sjeng          --     4.78           -- S
+    462.libquantum     --     0.0351         -- S
+    464.h264ref        --    14.0            -- S
+    471.omnetpp        --   393              -- S
+    473.astar          --     8.30           -- S
+    483.xalancbmk      --     0.120          -- S
+     Est. SPECint_base2006                   --
+     Est. SPECint2006                                                   Not Run
+    ```
+    
+  - 例子（1）的`FP` 部分：
+    ```yaml
+          set: fp
+            format: raw -> /root/spec2006/result/CFP2006.001.test.rsf
+            format: ASCII -> /root/spec2006/result/CFP2006.001.test.txt
+            format: Screen ->
+    
+                                      Estimated                       Estimated
+                    Base     Base       Base        Peak     Peak       Peak
+    Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
+    -------------- ------  ---------  ---------    ------  ---------  ---------
+    410.bwaves                                  NR
+    416.gamess                                  NR
+    433.milc           --      6.52          -- S
+    434.zeusmp                                  NR
+    435.gromacs                                 NR
+    436.cactusADM                               NR
+    437.leslie3d                                NR
+    444.namd           --      9.79          -- S
+    447.dealII                                  NR
+    450.soplex         --      0.024         -- S
+    453.povray         --      0.875         -- S
+    454.calculix                                NR
+    459.GemsFDTD                                NR
+    465.tonto                                   NR
+    470.lbm            --      1.54          -- S
+    481.wrf                                     NR
+    482.sphinx3        --      1.22          -- S
+     Est. SPECfp_base2006                    --
+     Est. SPECfp2006                                                    Not Run
+    ```
+ 
 
 - 报告例子（2），这个报告来自`CINT`的log,已经单独区分出了`INT`部分，所以不需要再从中间划开区分两部分
   ```yaml
@@ -388,7 +417,7 @@ spec 有两种运行模式，一个是 `base` ，基本模式，一般使用这�
     - 优化灵活性更高，但可能降低可重复性。
   
 2. **完整解释表格**
-  
+   
   | **字段**          | **解释**                                                                                     |
   |--------------------|---------------------------------------------------------------------------------------------|
   | **Base Ref.**      | 官方标准硬件在 Base 配置下的参考运行时间。                                                    |
@@ -399,9 +428,15 @@ spec 有两种运行模式，一个是 `base` ，基本模式，一般使用这�
   | **Peak Ratio**     | 性能比值，`Peak Ref. / Peak Run Time`，数值越大表示性能越好。                                  |
  
 
-3. 关于 `Estimated Based Ratio` 这一列后面的状态列举及解释，看报告（2）做辅助理解：
+4. 关于 `Estimated Based Ratio` 这一列后面的状态列举及解释，看报告（2）做辅助理解：
   - `S`：成功运行
   - `*`：成功运行并且被选为中位数
   - `NR`：没有运行（Not Run）
   - `CE`：编译错误（Compile Error）
 
+### 关于 Patch
+- 有时候 spec 的源码可能有问题，需要自己手动修正错误，修改源码
+- 在这种情况下，将修改过后的spec重新打包再分发是不可以的，在安装这个修改版本的时候会因为 spec 自带的 checksum 而没有办法通过检验
+- 解决方法：
+  - 把修改的部分变成 patch
+  - 在安装 spec 完成之后再把 patch 给打上去 
