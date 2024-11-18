@@ -36,7 +36,7 @@ draft: false
   并且要注入环境变量`ASAN_OPTIONS=halt_on_error=0:detect_leaks=0`
 
 ### 运行模式
-spec 有两种运行模式，一个是 base ，基本模式，一般使用这个，一个是 peak ，性能模式，测试峰值性能极限
+spec 有两种运行模式，一个是 `base` ，基本模式，一般使用这个，一个是 `peak` ，性能模式，测试峰值性能极限
 - 关于这两个关键字的解释，要看下文如何`看结果报告`那一章节
 
 ### Fortran 错误
