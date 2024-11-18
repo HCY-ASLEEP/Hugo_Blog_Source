@@ -63,7 +63,7 @@ spec 有两种运行模式，一个是 base ，基本模式，一般使用这个
   - log2excel 脚本，这里是一个简单的将这些 success 项目信息转为 excel 表格的脚本，以及应该喂给这个脚本的 success 数据格式：
     ```
     CC               = /root/asanopt/llvm-4.0.0-project/build/bin/clang    -std=gnu89 -fsanitize=address -fsanitize-recover=address -m64 -g
-    CXX              = /root/asanopt/llvm-4.0.0-project/build/bin/clang++             -fsanitize=address -fsanitize-recover=address -m64 -g
+    CXX              = /root/asanopt/llvm-4.0.0-project/build/bin/clang++  -std=c++98 -fsanitize=address -fsanitize-recover=address -m64 -g
     
     400.perlbench base ref ratio=12.85, runtime=760.415379
     400.perlbench base ref ratio=14.33, runtime=681.948309
