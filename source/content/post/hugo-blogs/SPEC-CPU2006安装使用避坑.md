@@ -433,6 +433,7 @@ runspec --rebuild -c $name -a run -I -l --size $size -n $NUM_RUNS $PROJECT
   - `*`：成功运行并且被选为中位数
   - `NR`：没有运行（Not Run）
   - `CE`：编译错误（Compile Error）
+  - ｀VE｀：验证错误（Verification Error），这意味着在测试过程中，程序运行没有出现运行时错误，但是其输出结果与预期结果不一致，无法通过验证
 
 ### 关于 Patch
 - 有时候 spec 的源码可能有问题，需要自己手动修正错误，修改源码
