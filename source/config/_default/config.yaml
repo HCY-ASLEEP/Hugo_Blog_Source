@@ -108,15 +108,15 @@ menu:
         - identifier: categories
           name: 目录
           url: /categories/
-          weight: 20
+          weight: 30
         - identifier: tags
           name: 标签
           url: /tags/
-          weight: 10
+          weight: 20
         - identifier: search
           name: 🔍
           url: /search/
-          weight: 30
+          weight: 70
         - identifier: archives
           name: 归档
           url: /archives/
@@ -124,11 +124,15 @@ menu:
         - identifier: about
           name: 关于
           url: /about/
-          weight: 30
+          weight: 60
         - identifier: friends
           name: 友链
           url: /friends/
-          weight: 29
+          weight: 40
+        - identifier: todo
+          name: TODO
+          url: /todo/
+          weight: 50
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
