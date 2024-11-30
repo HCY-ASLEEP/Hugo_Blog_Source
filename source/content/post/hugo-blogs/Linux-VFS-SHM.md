@@ -14,7 +14,7 @@ draft: false
 ## VMA（virtual memory area）
 - Linux 内核用`vm_area_struct`结构体描述某一段连续的虚拟内存区域VMA（virtual memory area），每个虚拟内存区域 `VMA` 都有自己的`vm_area_struct` 结构体
 - 内存描述符 `mm_struct` 指向进程的整个地址空间，`vm_area_struct` 只是指向了虚拟空间的一段，这块虚拟内存区域VMA的地址范围为 `[vm_start, vm_end)` ，左开右闭
-  <img src="https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/v2-426557bb4eb1e7044bd649483942c2ad_r.jpg" width=60% align="middle">
+  ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/v2-426557bb4eb1e7044bd649483942c2ad_r.jpg)
 - `vm_area_struct` 是由双向链表链接起来的，它们是按照虚拟地址降序排序的，每个这样的结构都对应描述一个地址空间范围
 - 为了快速根据地址找到对应的 `VMA`，内核对其建立了红黑树索引，红黑树的每个叶子结点就是一个VMA区域，引入红黑树的好处是可以提高查找VMA的效率（即便VMA的数量翻倍，VMA的查找次数也只增加一次）
   ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/v2-82dec5bde95009f934d3978c15412626_1440w.jpg)
