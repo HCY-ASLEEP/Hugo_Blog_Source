@@ -119,7 +119,7 @@ draft: false
 
 4. **文件系统类型**：它们都是 Linux 内核中的文件系统类型，可以通过 `mount` 命令挂载到指定路径上
    
-6. **核心实现**： `tmpfs` 和 `shm` `share core functionality` ，比如说对虚拟文件 `inode` 的描述都是使用 `shmem_inode_info` （ `shmem_inode_info` 可以看作 `inode` 的继承）
+6. **核心实现**： `tmpfs` 和 `shm` `share core functionality` ，比如说对虚拟文件 `inode` 的描述都是使用 `shmem_inode_info` （ `shmem_inode_info` 可以看作 `inode` 的继承，在内存文件系统里面如果要创建一个文件，要先向系统申请一个 `inode` ，然后才是将这个 `inode` 传给 `shmem_inode_info` ，有点类似 C++ 里面的当一个子类要实例化的时候需要先实例化父类）
    ```c++
    struct shmem_inode_info {
    	spinlock_t		lock;
