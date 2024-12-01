@@ -63,7 +63,7 @@ draft: false
 - 与之对应，`address_space_operations` 就是用来操作该文件映射到内存的页面，比如把内存中的修改写回文件、从文件中读入数据到页面缓冲等
 - 一个具体的文件在打开后，内核会在内存中为之建立一个 `struct inode` 结构（该 `inode` 结构也会在对应的 `file` 结构体中引用），其中的 `i_mapping` 域指向一个 `address_space` 结构
 - 一个文件就对应一个 `address_space` 结构，一个 `address_space` 与一个偏移量能够确定一个 `page cache` 或 `swap cache` 中的一个页面，当要寻址某个数据时，很容易根据给定的文件及数据在文件内的偏移量而找到相应的页面
-- `struct file` 和 `struct inode` 结构体中都有一个 `struct address_space` 指针，实际上，`file -> f_mapping` 是从对应 `inode -> i_mapping` 而来, `inode -> i_mapping -> a_ops` 是由对应的文件系统类型在生成这个 `inode` 时赋予的
+- `struct file` 和 `struct inode` 结构体中都有一个 `struct address_space` 指针
   ```c++
   # https://elixir.bootlin.com/linux/v2.6.0/source/include/linux/fs.h#L319
   struct address_space {
@@ -145,7 +145,7 @@ draft: false
 | **配置方式**      | 需要显式挂载（`mount -t tmpfs`）              | 使用 `shmget()` 和 `mmap()` 创建共享内存区域 |
 | **文件命名**      | 文件有具体的路径名，文件名可以由用户定义        | 文件名由内核管理，通常是匿名的或者以 `SYSVNN` 命名 |
 | **清除方式**      | 文件在系统关闭或卸载时丢失，类似于 RAM 磁盘   | 共享内存区域在使用 `shmctl()` 删除时丢失    |
-| **进程间通信**| 不直接支持进程间通信，只是一个临时文件系统，但是也可以使用多进程打开一个共同的 `tmpfs` 文件进行进程间通信     | 直接支持进程间的内存共享和通信               |
+| **进程间通信** | 不直接支持进程间通信，只是一个临时文件系统，但也可以使用多进程打开一个共同的 `tmpfs` 文件进行进程间通信     | 直接支持进程间的内存共享和通信               |
 
 ### `tmpfs` 用法：
 假设有一个需要临时存储的文件，并希望它在系统重启时被清除。你可以使用 `tmpfs` 来挂载一个内存文件系统，并在其中创建文件
