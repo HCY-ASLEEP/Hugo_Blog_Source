@@ -59,7 +59,7 @@ draft: false
   ```
 
 ## `struct address_space`
-- 看 `linux` 内核很容易被 `struct address_space` 这个结构迷惑，它是代表某个地址空间吗？实际上不是的，它是用于管理文件 `struct inode` 映射到内存的页面 `struct page` 的，其实就是每个 `file` 都有这么一个结构，将文件系统中这个 `file` 对应的数据与这个 `file` 对应的内存绑定到一起
+- 看 `linux` 内核很容易被 `struct address_space` 这个结构迷惑，它是代表某个地址空间吗？实际上不是的，它是用于管理文件 `struct inode` 映射到内存的页面 `struct page` 的，其实就是每个读入内存的 `file` 都有这么一个结构，将文件系统中这个 `file` 对应的数据与这个 `file` 的磁盘数据与内存页对应起来
 - 与之对应，`address_space_operations` 就是用来操作该文件映射到内存的页面，比如把内存中的修改写回文件、从文件中读入数据到页面缓冲等
 - 一个具体的文件在打开后，内核会在内存中为之建立一个 `struct inode` 结构（该 `inode` 结构也会在对应的 `file` 结构体中引用），其中的 `i_mapping` 域指向一个 `address_space` 结构
 - 一个文件就对应一个 `address_space` 结构，一个 `address_space` 与一个偏移量能够确定一个 `page cache` 或 `swap cache` 中的一个页面，当要寻址某个数据时，很容易根据给定的文件及数据在文件内的偏移量而找到相应的页面
