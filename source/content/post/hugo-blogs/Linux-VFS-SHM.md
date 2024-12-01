@@ -233,7 +233,7 @@ draft: false
     ((type *)((char *)(ptr) - offsetof(type, member)))
   ```
 - 在 `dentry` 这个场景下，`container_of` 里面的各个参数可以这样子理解
-  - `ptr` ：`list_head` 指针，例如 `&dir->d_subdirs`
+	- `ptr` ：`list_head` 指针，例如 `&dir->d_subdirs`
 	- `type`：包含 `list_head` 的结构体类型（这里是 `struct dentry`）
 	- `member`：`list_head` 字段在结构体中的名字（这里是 `d_subdirs`）
   - `offsetof(type, member)`：获取 `member` 在 `type` 中的偏移量，通过 `ptr` 减去 `member` 的偏移量，计算出结构体的起始地址
