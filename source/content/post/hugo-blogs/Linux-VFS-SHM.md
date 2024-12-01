@@ -1,5 +1,5 @@
 ---
-title: "Linux 虚拟文件系统（虚拟内存文件系统）以及共享内存原理"
+title: "Linux 虚拟内存文件系统以及共享内存"
 date: 2024-11-30T19:35:39Z
 draft: false
 ---
@@ -236,7 +236,10 @@ draft: false
 	- `ptr` ：`list_head` 指针，例如 `&dir->d_subdirs`
 	- `type`：包含 `list_head` 的结构体类型（这里是 `struct dentry`）
 	- `member`：`list_head` 字段在结构体中的名字（这里是 `d_subdirs`）
-  - `offsetof(type, member)`：获取 `member` 在 `type` 中的偏移量，通过 `ptr` 减去 `member` 的偏移量，计算出结构体的起始地址
+	- `offsetof(type, member)`：获取 `member` 在 `type` 中的偏移量，通过 `ptr` 减去 `member` 的偏移量，计算出结构体的起始地址
+
+### 删除目录
+- 在文件系统中，删除一个目录时，内核会使用深度优先算法递归地删除该目录下的所有文件和子目录
 
 ## `tmpfs` 与 `shm` 联系
 
@@ -353,6 +356,43 @@ draft: false
   close(fd);
   ```
 
+### 观察真实机器上的 `tmpfs`
+```bash
+hcy@debian:~$ df -h
+文件系统        大小  已用  可用 已用% 挂载点
+udev             32G     0   32G    0% /dev
+tmpfs           6.3G  1.9M  6.3G    1% /run
+/dev/sdb1       119G   29G   91G   25% /
+tmpfs            32G  550M   31G    2% /dev/shm
+tmpfs           5.0M   12K  5.0M    1% /run/lock
+tmpfs            32G   96M   32G    1% /tmp
+/dev/sdb2       300M  5.9M  294M    2% /boot/efi
+/dev/sda2       900G  218G  682G   25% /mnt/146bf4b9-b9ad-486d-811c-dcbb31aa3324
+tmpfs           6.3G  256K  6.3G    1% /run/user/1000
+
+hcy@debian:~$ id hcy
+uid=1000(hcy) gid=1000(hcy) 组=1000(hcy), ...
+```
+- 在上面的 `df -h` 输出中，列出了多个 `tmpfs` 挂载点
+	- `/run`: `tmpfs` 被挂载在 `/run` 目录。它是一个动态的、短期的文件系统，用于存储系统运行时的数据（如进程 ID 文件、锁文件等）
+   
+	- `/dev/shm`: `tmpfs` 被挂载在 `/dev/shm` 目录，它是共享内存的挂载点，供进程间通信使用
+
+	- `/run/lock`: `tmpfs` 被挂载在 `/run/lock` 目录，用于存放进程间锁文件
+
+	- `/tmp`: `tmpfs` 被挂载在 `/tmp` 目录，用于存放临时文件
+
+	- `/run/user/1000`: 该 `tmpfs` 是为用户 ID 为 1000 的用户（也就是用户 `hcy` ）提供的临时文件系统，用于存储用户的运行时数据，如程序缓存、临时文件等
+- 这些 `tmpfs` 挂载点的数据在机器重启之后都不会存在
+
+### 观察容器里面的 `tmpfs`
+- 在 `Docker` 中，容器的文件系统是基于 `UnionFS`（联合文件系统）的，通常采用的是 `aufs`、`overlay` 或 `overlay2` 等文件系统，而`UnionFS` 并不直接使用 `tmpfs`，除非明确将某些目录挂载为 `tmpfs`
+- Docker 容器的文件系统是持久化的，在容器中文件存储在镜像层 `read-only layer` 和容器层 `read-write layer` 上
+- 默认情况下，当容器重启时，容器层会保持不变，即使写入到 `/tmp` 目录的文件，都会保存在容器层中，而不是丢失
+- 只有在宿主机层面在容器创建时，通过 `--tmpfs` 参数来指定将 `/tmp` 挂载为 tmpfs，才有可能让容器里面的 `/tmp` 的表现和常规的一样
+  ```bash
+  docker run --tmpfs /tmp <image_id>
+  ```
 
 ## 全局共享的零页（global zero page）
 
@@ -361,4 +401,4 @@ draft: false
 - 例如当文件通过 `truncate()` 扩展时，新增加的部分需要初始化为零。如果直接写零到磁盘或内存，会消耗资源
 - 通过全局零页，文件系统可以将新增加的部分映射到这块零页，而不需要实际分配和初始化
 - 又例如进程分配内存时，未使用的部分（例如通过 `mmap` 映射的匿名内存）通常被映射为零页，直到实际写入数据为止
-- 由于零页是只读的，如果进程试图写入零页，会触发页错误（page fault），内核会复制一块新的物理页供进程使用，这叫做“写时复制” （Copy-on-Write, COW）
+- 由于零页是只读的，如果进程试图写入零页，会触发页错误 `page fault`，内核会复制一块新的物理页供进程使用，这叫做“写时复制”  `Copy-on-Write, COW`
