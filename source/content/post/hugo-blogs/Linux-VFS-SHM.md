@@ -147,9 +147,9 @@ draft: false
   - 文件所有者和用户组
   - 文件大小
   - 文件的时间戳（创建时间、修改时间、访问时间）
-  - 文件数据块的位置（指向数据块的指针）
-  - ...
-`inode` 指向文件在磁盘上的物理位置，帮助操作系统定位文件数据块，从而实现文件的读取和写入
+  - 文件数据块的位置（指向数据块的指针），包括直接块指针 `i_direct` 与间接块指针 `i_indirect`
+    ![](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/474a5adb633c970271b49623e4cad41b.png)
+- `inode` 指向文件在磁盘上的物理位置，帮助操作系统定位文件数据块，从而实现文件的读取和写入
 
 
 ### `dentry` 和 `inode` 的关系
