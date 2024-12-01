@@ -118,15 +118,29 @@ draft: false
 - `tmpfs` 是面向用户的、通用的基于内存的文件系统，使用 RAM 作为存储媒介，用于提供临时存储和共享内存功能，能够通过挂载点提供更多功能
 - `shm` 是 Linux 内核内部实现匿名内存共享的机制，主要为内核服务，不对用户直接可见
 - `shm` 是 `tmpfs` 的一种特殊用途变体，它对 `tmpfs` 的核心功能进行再次针对性封装和改进，为匿名页面提供统一的文件支持接口，使内核可以用文件操作函数（如 `readpage` 或 `writepage`）管理这些页面，实现匿名共享内存（如通过 `mmap` 创建的 `MAP_ANONYMOUS | MAP_SHARED` 区域）和 System V 共享内存（`shmget`）
-
-| 特性                        | `shm`                                      | `tmpfs`                                   |
-|-----------------------------|--------------------------------------------|------------------------------------------|
-| **主要用途**                | 为匿名内存页面或共享内存区域提供支持。       | 用户挂载点，用于存储临时文件或共享内存。  |
-| **访问方式**                | 通过 `mmap` 或 `shmget/shmat` 接口访问。     | 挂载为文件系统后，通过文件操作访问。      |
-| **是否对用户可见**          | 不对用户直接可见（由内核管理）。             | 可由用户挂载到目录，如 `/tmp` 或 `/dev/shm`。 |
-| **挂载方式**                | 通过 `kern_mount()` 自动挂载（内核专用）。   | 需要显式挂载，系统管理员决定挂载点。       |
-| **创建对象**                | 由内核为匿名页面或 `shmget` 区域创建。       | 用户可以手动创建文件或目录。              |
-| **主要接口**                | 内核内部的 `shmem` 操作。                   | 文件系统接口（如 `open`、`write`）。       |
+- `shm` 对虚拟文件的描述都是使用 `shmem_inode_info` （ `shmem_inode_info` 可以看作 `inode` 的继承，在内存文件系统里面如果要创建一个文件，要先向系统申请一个 `inode` ，然后才是将这个 `inode` 传给 `shmem_inode_info` ，有点类似 C++ 里面的当一个子类要实例化的时候需要先实例化父类）
+   ```c++
+   struct shmem_inode_info {
+   	spinlock_t		lock;
+   	unsigned long		next_index;
+   	swp_entry_t		i_direct[SHMEM_NR_DIRECT]; /* for the first blocks */
+   	struct page	       *i_indirect; /* indirect blocks */
+   	unsigned long		alloced;    /* data pages allocated to file */
+   	unsigned long		swapped;    /* subtotal assigned to swap */
+   	unsigned long		flags;
+   	struct list_head	list;
+   	struct inode		vfs_inode;
+   };
+   ```
+   
+  | 特性                        | `shm`                                      | `tmpfs`                                   |
+  |-----------------------------|--------------------------------------------|------------------------------------------|
+  | **主要用途**                | 为匿名内存页面或共享内存区域提供支持       | 用户挂载点，用于存储临时文件或共享内存  |
+  | **访问方式**                | 通过 `mmap` 或 `shmget/shmat` 接口访问     | 挂载为文件系统后，通过文件操作访问      |
+  | **是否对用户可见**          | 不对用户直接可见（由内核管理）             | 可由用户挂载到目录，如 `/tmp` 或 `/dev/shm` |
+  | **挂载方式**                | 通过 `kern_mount()` 自动挂载（内核专用）   | 需要显式挂载，系统管理员决定挂载点      |
+  | **创建对象**                | 由内核为匿名页面或 `shmget` 区域创建       | 用户可以手动创建文件或目录              |
+  | **主要接口**                | 内核内部的 `shmem` 操作                    | 文件系统接口（如 `open`、`write`）      |
 
 ### **`shm` 使用**
 - System V 共享内存
