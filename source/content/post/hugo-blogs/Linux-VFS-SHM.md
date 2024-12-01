@@ -196,7 +196,7 @@ draft: false
   - `d_subdirs` 维护子项列表，`d_child` 链接到父目录的子项链表，形成一个双向链表结构的目录树
 
 - 假设文件系统目录结构如下：
-  ```yaml
+  ```txt
   /
   ├── home/
   │   ├── user/
@@ -205,7 +205,7 @@ draft: false
   └── etc/
   ```
 - 那么它们之间的链表关系图应该是这样子的：
-  ```yaml
+  ```txt
   (root /) d_child
            d_subdirs
                 +
