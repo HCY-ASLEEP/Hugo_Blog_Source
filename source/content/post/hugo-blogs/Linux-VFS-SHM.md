@@ -122,14 +122,14 @@ draft: false
 - 每个 `dentry` 关联了一个路径组件（如文件夹或文件名），并指向文件系统中的 `inode`，内核通过逐级解析路径来查找文件
   ```c
   struct dentry {
-    ......
+		......
   	struct inode  * d_inode;	/* Where the name belongs to - NULL is negative */
-    ......
+		......
   	struct list_head d_child;	/* child of parent list */
   	struct list_head d_subdirs;	/* our children */
-    ......
+		......
   	struct qstr d_name; /* file name */
-    ......
+		......
   };
 
   struct qstr {
@@ -168,10 +168,10 @@ draft: false
 - 在 Linux 内核中只需要用到 `struct list_head d_child` 和 `struct list_head d_subdirs` 这两个两个关键双向链表就可以实现目录树结构
   ```c
   struct dentry {
-    ......
+  	......
   	struct list_head d_child;	/* child of parent list */
   	struct list_head d_subdirs;	/* our children */
-    ......
+  	......
   };
 
   struct list_head {
@@ -224,6 +224,19 @@ draft: false
                 |
                 +--> (etc) d_child
   ```
+
+- 现在还剩下最后一个问题，`d_subdirs` 是 `list_head` 类型的数据结构，它本身只包含两个指针：`next` 和 `prev`，应该如何通过 `list_head` 找到包含它的 `struct dentry` 呢？
+- 在内核里面，实现这个目标需要依赖嵌套结构和偏移量计算
+- 而这一步的关键函数是 `contianer_of`
+  ```c
+  #define container_of(ptr, type, member) \
+    ((type *)((char *)(ptr) - offsetof(type, member)))
+  ```
+- 在 `dentry` 这个场景下，`container_of` 里面的各个参数可以这样子理解
+  - `ptr` ：`list_head` 指针，例如 `&dir->d_subdirs`
+	- `type`：包含 `list_head` 的结构体类型（这里是 `struct dentry`）
+	- `member`：`list_head` 字段在结构体中的名字（这里是 `d_subdirs`）
+  - `offsetof(type, member)`：获取 `member` 在 `type` 中的偏移量，通过 `ptr` 减去 `member` 的偏移量，计算出结构体的起始地址
 
 ## `tmpfs` 与 `shm` 联系
 
