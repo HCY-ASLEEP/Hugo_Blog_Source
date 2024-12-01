@@ -91,7 +91,7 @@ draft: false
   ```
 
 ## 文件系统、文件类型、`page` 的划分
-- 为了方便理解，在此将文件系统划分为内存文件系统（虚拟文件系统）与硬盘文件系统（物理文件系统），在书的这一章节里面，也将广义上的文件分为 `virtual file` 和 `physics file`
+- 为了方便理解，在此将文件系统划分为内存文件系统（虚拟文件系统）与硬盘文件系统（物理文件系统），在书的这一章节里面，也将广义上的文件分为 `virtual file` 和 `physical file`
 - 在书的这一章节里面，将内存页面 `page` 划分为 `anonymous pages` （没有物理文件支持的内存页面）与 `pages backed by a file`（由物理文件映射到内存的某些 `pages`）
 
 ## `page cache` 与 `swap cache`
