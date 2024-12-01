@@ -131,6 +131,13 @@ draft: false
   	struct qstr d_name; /* file name */
     ......
   };
+
+  struct qstr {
+	  const unsigned char * name;
+	  unsigned int len;
+	  unsigned int hash;
+	  char name_str[0];
+  };
   ```
 
 ### `inode`（索引节点）
@@ -158,7 +165,65 @@ draft: false
   - 为了提高性能，内核会缓存路径名和 `inode` 之间的映射关系，这样在访问同一个文件或目录时，可以避免重复解析路径
 
 ### 用 `dentry` 构建“多叉树”文件系统
+- 在 Linux 内核中只需要用到 `struct list_head d_child` 和 `struct list_head d_subdirs` 这两个两个关键双向链表就可以实现目录树结构
+  ```c
+  struct dentry {
+    ......
+  	struct list_head d_child;	/* child of parent list */
+  	struct list_head d_subdirs;	/* our children */
+    ......
+  };
 
+  struct list_head {
+    struct list_head *next, *prev;
+  };
+  ```
+- `d_child`
+  - 表示当前目录项在父目录的子项链表中的位置
+  - 它连接到父目录的 `d_subdirs` 链表，用于形成目录树中的父子关系
+  - `d_child -> prev` 为父目录或者兄弟
+  - `d_child -> next` 为兄弟或者 `NULL`
+
+- `d_subdirs`
+  - 表示当前目录的子目录和文件列表
+  - 用于遍历当前目录下的所有子项
+  - 当前目录下的每个子项（文件或子目录）的 `d_child` 都会被挂接到 `d_subdirs` 链表中
+  - `d_subdirs -> prev` 为 `NULL`
+  - `d_subdirs -> next` 为当前目录下第一个孩子或者 `NULL`
+  - 在当前目录新建文件时，创建的文件会以头插法插到 `d_subdirs -> next`
+
+- `d_subdirs` 与 `d_child` 配合
+  - `d_subdirs` 维护子项列表，`d_child` 链接到父目录的子项链表，形成一个双向链表结构的目录树
+
+- 假设文件系统目录结构如下：
+  ```yaml
+  /
+  ├── home/
+  │   ├── user/
+  │   │   ├── file1
+  │   │   └── documents/
+  └── etc/
+  ```
+- 那么它们之间的链表关系图应该是这样子的：
+  ```yaml
+  (root /) d_child
+           d_subdirs
+                +
+                |
+                +--> (home) d_child
+                |           d_subdirs
+                |                +
+                |                |
+                |                +--> (user) d_child
+                |                            d_subdirs
+                |                                 +
+                |                                 |
+                |                                 +--> (file1) d_child
+                |                                 |
+                |                                 +--> (documents) d_child
+                |
+                +--> (etc) d_child
+  ```
 
 ## `tmpfs` 与 `shm` 联系
 
