@@ -12,7 +12,7 @@ draft: false
 - 而这也正是 `VFS`（虚拟文件系统 `virtual file system` ，包括内存文件系统以及共享内存管理系统）的设计理念以及实现方向
 
 ## VMA（virtual memory area）
-- Linux 内核用`vm_area_struct`结构体描述某一段连续的虚拟内存区域VMA（virtual memory area），每个虚拟内存区域 `VMA` 都有自己的`vm_area_struct` 结构体
+- Linux 内核用`vm_area_struct`结构体描述某一段连续的虚拟内存区域 `VMA（virtual memory area）`，每个虚拟内存区域 `VMA` 都有自己的`vm_area_struct` 结构体
 - 内存描述符 `mm_struct` 指向进程的整个地址空间，`vm_area_struct` 只是指向了虚拟空间的一段，这块虚拟内存区域VMA的地址范围为 `[vm_start, vm_end)` ，左开右闭
   <img src="https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/v2-426557bb4eb1e7044bd649483942c2ad_r.jpg" width=55%>
 - `vm_area_struct` 是由双向链表链接起来的，它们是按照虚拟地址降序排序的，每个这样的结构都对应描述一个地址空间范围
