@@ -143,13 +143,12 @@ draft: false
 | **用途**          | 临时文件存储系统，用于存储不需要持久化的临时文件 | 主要用于进程间通信（IPC），存储共享内存区域 |
 | **挂载点**        | 通常挂载在 `/tmp`，用于存储临时文件         | 通常挂载在 `/dev/shm`，用于共享内存       |
 | **配置方式**      | 需要显式挂载（`mount -t tmpfs`）              | 使用 `shmget()` 和 `mmap()` 创建共享内存区域 |
-| **文件系统类型**  | `tmpfs` 文件系统类型                        | `shm` 是 `tmpfs` 的一个变体，专门用于共享内存 |
 | **文件命名**      | 文件有具体的路径名，文件名可以由用户定义        | 文件名由内核管理，通常是匿名的或者以 `SYSVNN` 命名 |
 | **清除方式**      | 文件在系统关闭或卸载时丢失，类似于 RAM 磁盘   | 共享内存区域在使用 `shmctl()` 删除时丢失    |
-| **支持进程间通信**| 不直接支持进程间通信，只是一个临时文件系统     | 直接支持进程间的内存共享和通信               |
+| **进程间通信**| 不直接支持进程间通信，只是一个临时文件系统，但是也可以使用多进程打开一个共同的 `tmpfs` 文件进行进程间通信     | 直接支持进程间的内存共享和通信               |
 
 ### `tmpfs` 用法：
-假设你有一个需要临时存储的文件，并希望它在系统重启时被清除。你可以使用 `tmpfs` 来挂载一个内存文件系统，并在其中创建文件
+假设有一个需要临时存储的文件，并希望它在系统重启时被清除。你可以使用 `tmpfs` 来挂载一个内存文件系统，并在其中创建文件
 ```bash
 # 挂载 tmpfs 到 /mnt/tmp
 mount -t tmpfs tmpfs /mnt/tmp
@@ -165,7 +164,7 @@ cat /mnt/tmp/tempfile.txt
 `tmpfs` 是一个传统的文件系统，文件通过标准的文件操作（如 `open()`、`read()`、`write()` 等）进行访问
 
 ### `shm` 用法：
-假设你需要在两个进程之间共享数据，可以使用 `shm` 来创建共享内存段
+假设需要在两个进程之间共享数据，可以使用 `shm` 来创建共享内存段
 ```c
 // 创建共享内存，一个大小为 1024 字节的共享内存段
 int shmid = shmget(IPC_PRIVATE, 1024, IPC_CREAT | 0666);
@@ -182,6 +181,55 @@ printf("Shared memory content: %s\n", shm_ptr);
 // 删除共享内存
 shmctl(shmid, IPC_RMID, NULL);
 ```
-两个进程可以通过共享内存共享数据
+`shm` 也可以使用类似 `POSIX` 的文件操作接口
+```c++
+#include <fcntl.h>      // for O_CREAT, O_RDWR
+#include <sys/mman.h>   // for shm_open(), mmap()
+#include <sys/stat.h>   // for mode constants
+#include <unistd.h>     // for ftruncate()
+#include <stdio.h>      // for printf()
+
+int main() {
+    const char *shm_name = "/my_shm";  // 共享内存对象的名称
+    size_t size = 4096;                // 共享内存的大小
+
+    // 创建或打开共享内存对象
+    // 使用 shm_open() 创建或打开共享内存对象后，返回的文件描述符可以通过 open() 进行访问
+    int shm_fd = shm_open(shm_name, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
+    if (shm_fd == -1) {
+        perror("shm_open");
+        return 1;
+    }
+
+    // 设置共享内存的大小
+    if (ftruncate(shm_fd, size) == -1) {
+        perror("ftruncate");
+        return 1;
+    }
+
+    // 将共享内存映射到进程的地址空间
+    void *shm_ptr = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+    if (shm_ptr == MAP_FAILED) {
+        perror("mmap");
+        return 1;
+    }
+
+    // 使用共享内存
+    // 写入数据到共享内存
+    snprintf((char *)shm_ptr, size, "Hello from shared memory!");
+
+    // 解除映射
+    if (munmap(shm_ptr, size) == -1) {
+        perror("munmap");
+        return 1;
+    }
+
+    // 关闭共享内存对象
+    close(shm_fd);
+
+    return 0;
+}
+
+```
 
 
