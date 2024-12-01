@@ -4,7 +4,7 @@ date: 2024-11-30T19:35:39Z
 draft: false
 ---
 
-最近看了[《Understanding the Linux® Virtual Memory Manager》](https://pdos.csail.mit.edu/~sbw/links/gorman_book.pdf)里面的第十二章 **SHARED MEMORY VIRTUAL FILESYSTEM** ，对文件系统以及内存文件管理有了更加深入的了解，下面是看了这一章节之后对其中一些概念的理解以及拓展，要是想了解这一章，建议读原文，配合这篇博客辅助理解
+最近看了[《Understanding the Linux® Virtual Memory Manager》](https://pdos.csail.mit.edu/~sbw/links/gorman_book.pdf)里面的第十二章 **SHARED MEMORY VIRTUAL FILESYSTEM** ，对文件系统以及内存文件管理有了更加深入的了解，下面是看了这一章节之后对其中一些概念的理解以及拓展，要是想了解这一章，[建议读原文](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/gordan-book-linux-vmm12-chap.pdf)，配合这篇博客辅助理解
 
 ## Linux 哲学
 - 在 Linux 里面，一切皆文件，所有的东西都可以看作一个文件，而凡是文件，都应该支持`POSIX`文件操作（比如 `read()` ，`write()` ，`open()`）
