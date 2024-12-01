@@ -100,136 +100,125 @@ draft: false
 - `page cache` 作用：当文件被读取时，操作系统会把文件内容加载到内存的 `page cache` 中。如果同一个文件被再次访问，操作系统会直接从 `page cache` 中读取，而不是再次从磁盘读取，从而减少磁盘访问次数，提高性能
 - `swap cache` 作用：`swap cache` 缓存的是已经交换到磁盘的数据，它是为了提高交换操作的效率，优化虚拟内存的交换操作，如果内存中再次需要使用这些页面，操作系统会从 `swap cache` 里面寻找，然后再从 `swap` 里面查找，同时对于那些刚刚从物理内存里面换出来的 `page` 以及从 `swap` 空间读取的 `page` 也会放在 `swap cache` 里面
 - 一般情况下用户进程调用 `mmap()` 时，只是在进程空间内新增了一块相应大小的缓冲区，并设置了相应的访问标识，但并没有建立进程空间到物理页面的映射
-- 因此，第一次访问该空间时，会引发一个缺页异常。对于共享内存映射情况，缺页异常处理程序首先在 `swap cache` 中寻找目标页（符合 `address_space` 以及偏移量的物理页），如果找到，则直接返回地址；如果没有找到，则判断该页是否在交换区 (`swap area`)，如果在，则执行一个换入操作；如果上述两种情况都不满足，处理程序将分配新的物理页面，并把它插入到 `page cache` 中，最终将更新进程页表
+- 因此，第一次访问该空间时，会引发一个缺页异常
+- 对于共享内存映射情况，缺页异常处理程序首先在 `swap cache` 中寻找目标页（符合 `address_space` 以及偏移量的物理页），如果找到，则直接返回地址；如果没有找到，则判断该页是否在交换区 (`swap area`)，如果在，则执行一个换入操作；如果上述两种情况都不满足，处理程序将分配新的物理页面，并把它插入到 `page cache` 中，最终将更新进程页表
 - 对于映射普通文件情况（非共享映射），缺页异常处理程序首先会在 `page cache` 中根据 `address_space` 以及数据偏移量寻找相应的页面，如果没有找到，则说明文件数据还没有读入内存，处理程序会从磁盘读入相应的页面，并返回相应地址，同时，进程页表也会更新
 
 ## 硬盘（物理）文件系统
-
-## `tmpfs` 和 `shm` 共性与区别
-`tmpfs` 和 `shm` 都是基于内存的文件系统，它们将文件存储在内存中，而不是磁盘上，尽管它们有一些相似之处，但它们的用途、配置方法以及操作上也有一些关键的区别
-- **`tmpfs`** 用于存储临时文件，通常挂载到 `/tmp` 等目录，并提供标准的文件操作接口
-- **`shm`** 主要用于进程间通信，提供共享内存的功能，进程通过 `shmget()` 和 `mmap()` 创建和访问共享内存区域
-
-### 共同点
-- **基于内存**：`tmpfs` 和 `shm` 都是内存文件系统，文件的数据存储在内存中，而不是磁盘上，因此读写速度非常快
-
-- **核心实现**： `tmpfs` 和 `shm` `share core functionality` ，比如说对虚拟文件的描述都是使用 `shmem_inode_info` （ `shmem_inode_info` 可以看作 `inode` 的继承，在内存文件系统里面如果要创建一个文件，要先向系统申请一个 `inode` ，然后才是将这个 `inode` 传给 `shmem_inode_info` ，有点类似 C++ 里面的当一个子类要实例化的时候需要先实例化父类）
-   ```c++
-   struct shmem_inode_info {
-   	spinlock_t		lock;
-   	unsigned long		next_index;
-   	swp_entry_t		i_direct[SHMEM_NR_DIRECT]; /* for the first blocks */
-   	struct page	       *i_indirect; /* indirect blocks */
-   	unsigned long		alloced;    /* data pages allocated to file */
-   	unsigned long		swapped;    /* subtotal assigned to swap */
-   	unsigned long		flags;
-   	struct list_head	list;
-   	struct inode		vfs_inode;
-   };
-   ```
-  至于为什么 `tmpfs` 采用了与 `shm` 一样的核心实现，我的看法是，两个都是内存文件系统，并且 `tmpfs` 可以看作只有一个参与者“共享”的共享内存
-   
-- **内存管理**：它们都使用了 Linux 内存管理机制，文件存储在虚拟内存中，可以像普通文件一样进行操作，同时支持内存映射（`mmap()`）等内存操作
-
-- **支持匿名共享内存**：`tmpfs` 和 `shm` 都支持共享内存，多个进程可以将文件映射到自己的虚拟内存空间，实现进程间的内存共享
-
-- **文件系统类型**：它们都是 Linux 内核中的文件系统类型，可以通过 `mount` 命令挂载到指定路径上
-   
-
-### 区别
-
-| 特性              | **tmpfs**                                   | **shm**                                    |
-|------------------|--------------------------------------------|--------------------------------------------|
-| **用途**          | 临时文件存储系统，用于存储不需要持久化的临时文件 | 主要用于进程间通信（IPC），存储共享内存区域 |
-| **挂载点**        | 通常挂载在 `/tmp`，用于存储临时文件         | 通常挂载在 `/dev/shm`，用于共享内存       |
-| **配置方式**      | 需要显式挂载（`mount -t tmpfs`）              | 使用 `shmget()` 和 `mmap()` 创建共享内存区域 |
-| **文件命名**      | 文件有具体的路径名，文件名可以由用户定义        | 文件名由内核管理，通常是匿名的或者以 `SYSVNN` 命名 |
-| **清除方式**      | 文件在系统关闭或卸载时丢失，类似于 RAM 磁盘   | 共享内存区域在使用 `shmctl()` 删除时丢失    |
-| **进程间通信** | 不直接支持进程间通信，只是一个临时文件系统，但也可以使用多进程打开一个共同的 `tmpfs` 文件进行进程间通信     | 直接支持进程间的内存共享和通信               |
-
-### `tmpfs` 用法：
-假设有一个需要临时存储的文件，并希望它在系统重启时被清除。你可以使用 `tmpfs` 来挂载一个内存文件系统，并在其中创建文件
-```bash
-# 挂载 tmpfs 到 /mnt/tmp
-mount -t tmpfs tmpfs /mnt/tmp
-
-# 创建一个临时文件
-echo "Temporary file content" > /mnt/tmp/tempfile.txt
-
-# 查看文件
-cat /mnt/tmp/tempfile.txt
-```
-在 `tmpfs` 里面文件会存储在内存中，重启后文件会消失
-
-`tmpfs` 是一个传统的文件系统，文件通过标准的文件操作（如 `open()`、`read()`、`write()` 等）进行访问
-
-### `shm` 用法：
-假设需要在两个进程之间共享数据，可以使用 `shm` 来创建共享内存段
-```c
-// 创建共享内存，一个大小为 1024 字节的共享内存段
-int shmid = shmget(IPC_PRIVATE, 1024, IPC_CREAT | 0666);
-
-// 将共享内存附加到进程地址空间
-char *shm_ptr = (char *)shmat(shmid, NULL, 0);
-
-// 向共享内存写入数据
-strcpy(shm_ptr, "Shared memory data");
-
-// 在另一个进程中读取共享内存
-printf("Shared memory content: %s\n", shm_ptr);
-
-// 删除共享内存
-shmctl(shmid, IPC_RMID, NULL);
-```
-`shm` 也可以使用类似 `POSIX` 的文件操作接口
-```c++
-#include <fcntl.h>      // for O_CREAT, O_RDWR
-#include <sys/mman.h>   // for shm_open(), mmap()
-#include <sys/stat.h>   // for mode constants
-#include <unistd.h>     // for ftruncate()
-#include <stdio.h>      // for printf()
-
-int main() {
-    const char *shm_name = "/my_shm";  // 共享内存对象的名称
-    size_t size = 4096;                // 共享内存的大小
-
-    // 创建或打开共享内存对象
-    // 使用 shm_open() 创建或打开共享内存对象后，返回的文件描述符可以通过 open() 进行访问
-    int shm_fd = shm_open(shm_name, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
-    if (shm_fd == -1) {
-        perror("shm_open");
-        return 1;
-    }
-
-    // 设置共享内存的大小
-    if (ftruncate(shm_fd, size) == -1) {
-        perror("ftruncate");
-        return 1;
-    }
-
-    // 将共享内存映射到进程的地址空间
-    void *shm_ptr = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
-    if (shm_ptr == MAP_FAILED) {
-        perror("mmap");
-        return 1;
-    }
-
-    // 使用共享内存
-    // 写入数据到共享内存
-    snprintf((char *)shm_ptr, size, "Hello from shared memory!");
-
-    // 解除映射
-    if (munmap(shm_ptr, size) == -1) {
-        perror("munmap");
-        return 1;
-    }
-
-    // 关闭共享内存对象
-    close(shm_fd);
-
-    return 0;
-}
-
-```
+### dentry
 
 
+
+
+
+
+
+## `tmpfs` 与 `shm` 联系
+
+- `tmpfs` 是面向用户的、通用的基于内存的文件系统，使用 RAM 作为存储媒介，用于提供临时存储和共享内存功能，能够通过挂载点提供更多功能
+- `shm` 是 Linux 内核内部实现匿名内存共享的机制，主要为内核服务，不对用户直接可见
+- `shm` 是 `tmpfs` 的一种特殊用途变体，它对 `tmpfs` 的核心功能进行再次针对性封装和改进，为匿名页面提供统一的文件支持接口，使内核可以用文件操作函数（如 `readpage` 或 `writepage`）管理这些页面，实现匿名共享内存（如通过 `mmap` 创建的 `MAP_ANONYMOUS | MAP_SHARED` 区域）和 System V 共享内存（`shmget`）
+
+| 特性                        | `shm`                                      | `tmpfs`                                   |
+|-----------------------------|--------------------------------------------|------------------------------------------|
+| **主要用途**                | 为匿名内存页面或共享内存区域提供支持。       | 用户挂载点，用于存储临时文件或共享内存。  |
+| **访问方式**                | 通过 `mmap` 或 `shmget/shmat` 接口访问。     | 挂载为文件系统后，通过文件操作访问。      |
+| **是否对用户可见**          | 不对用户直接可见（由内核管理）。             | 可由用户挂载到目录，如 `/tmp` 或 `/dev/shm`。 |
+| **挂载方式**                | 通过 `kern_mount()` 自动挂载（内核专用）。   | 需要显式挂载，系统管理员决定挂载点。       |
+| **创建对象**                | 由内核为匿名页面或 `shmget` 区域创建。       | 用户可以手动创建文件或目录。              |
+| **主要接口**                | 内核内部的 `shmem` 操作。                   | 文件系统接口（如 `open`、`write`）。       |
+
+### **`shm` 使用**
+- System V 共享内存
+  ```c
+  // 使用 `shmget` 和 `shmat` 创建的共享内存段，通过 `shm` 提供底层支持
+  int shmid = shmget(IPC_PRIVATE, 1024, IPC_CREAT | 0666);
+  char *data = shmat(shmid, NULL, 0);
+  strcpy(data, "Hello, shm!");
+  printf("Data in shared memory: %s\n", data);
+  ```
+
+- 匿名共享内存
+  ```c
+  // 当进程调用 `mmap` 并指定 `MAP_ANONYMOUS | MAP_SHARED` 时，`shm` 会为这些匿名页面创建支持
+  size_t size = 4096;  // 分配一个4KB的内存区域
+  void *addr = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+  if (addr == MAP_FAILED) {
+      perror("mmap failed");
+      return 1;
+  }
+
+  // 通过指针访问并修改匿名共享内存
+  int *data = (int *)addr;
+  ```
+
+- 使用 `POSIX` 文件接口与 `shm` 结合
+  ```c
+  const char *shm_name = "/my_shm";  // 共享内存对象的名称
+  size_t size = 4096;                // 共享内存的大小
+
+  // 创建或打开共享内存对象
+  // 使用 shm_open() 创建或打开共享内存对象后，返回的文件描述符可以通过 open() 进行访问
+  int shm_fd = shm_open(shm_name, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
+  if (shm_fd == -1) {
+      perror("shm_open");
+      return 1;
+  }
+
+  // 设置共享内存的大小
+  if (ftruncate(shm_fd, size) == -1) {
+      perror("ftruncate");
+      return 1;
+  }
+
+  // 将共享内存映射到进程的地址空间
+  void *shm_ptr = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
+  if (shm_ptr == MAP_FAILED) {
+      perror("mmap");
+      return 1;
+  }
+
+  // 使用共享内存
+  // 写入数据到共享内存
+  snprintf((char *)shm_ptr, size, "Hello from shared memory!");
+
+  // 解除映射
+  if (munmap(shm_ptr, size) == -1) {
+      perror("munmap");
+      return 1;
+  }
+
+  // 关闭共享内存对象
+  close(shm_fd);
+  ```
+
+
+### **`tmpfs` 使用**
+- `tmpfs` 默认挂载到 `/tmp`，为用户提供快速的、基于 RAM 的临时文件存储空间，读写速度快，它也可以手动挂载到其他地方
+  ```bash
+  # 在 /mnt/tmpfs 挂载一个 tmpfs 文件系统
+  sudo mount -t tmpfs -o size=128M tmpfs /mnt/tmpfs
+  
+  # 在 tmpfs 上创建文件
+  echo "Hello, tmpfs!" > /mnt/tmpfs/testfile
+  cat /mnt/tmpfs/testfile
+  
+  # 卸载 tmpfs
+  sudo umount /mnt/tmpfs
+  ```
+- `tmpfs` 也可以使用多进程 `open` 或者多进程 `mmap` 到一个共同的 `tmpfs` 文件达到进程间通信的效果
+  ```c
+  int fd = open("example.txt", O_RDONLY);
+  char *mapped = mmap(NULL, 4096, PROT_READ, MAP_PRIVATE, fd, 0);
+  close(fd);
+  ```
+
+
+## 全局共享的零页（global zero page）
+
+- Linux 内核中有一个全局共享的零页，所有字节都被初始化为零，这块内存页被全局所有进程共享，通常是只读的，多进程可以同时访问
+- 当一个进程需要访问大量的全零数据（如未初始化的内存、扩展文件的空白部分），可以直接映射到全局零页，而无需实际分配和初始化物理内存，避免为每个进程单独分配一块全零的内存页
+- 例如当文件通过 `truncate()` 扩展时，新增加的部分需要初始化为零。如果直接写零到磁盘或内存，会消耗资源
+- 通过全局零页，文件系统可以将新增加的部分映射到这块零页，而不需要实际分配和初始化
+- 又例如进程分配内存时，未使用的部分（例如通过 `mmap` 映射的匿名内存）通常被映射为零页，直到实际写入数据为止
+- 由于零页是只读的，如果进程试图写入零页，会触发页错误（page fault），内核会复制一块新的物理页供进程使用，这叫做“写时复制” （Copy-on-Write, COW）
