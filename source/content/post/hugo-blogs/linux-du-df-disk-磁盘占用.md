@@ -75,7 +75,7 @@ draft: false
     tmpfs            32G     0   32G   0% /proc/acpi
     tmpfs            32G     0   32G   0% /sys/firmware
     ```
-- **ls -alh**
+### ls -alh
   - 如果想知道某一个文件（而非目录！）的大小，可以使用 `ls -alh` 命令
     - `-a` 表示展示所有信息
     - `-l` 表示以一个 list 呈现结果
