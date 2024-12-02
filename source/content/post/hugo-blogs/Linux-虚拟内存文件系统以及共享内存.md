@@ -254,7 +254,7 @@ draft: false
 
 
 ##  `tmpfs` 与 `shm` 联系
-### `shm`
+### `shm` introduction
 - `shm` 是 Linux 内核内部实现匿名内存共享的机制，主要为内核服务，不对用户直接可见
 - `shmem` 最初设计是为支持 `POSIX` 共享内存（如 `shm_open`）和 System V 共享内存（如 `shmget`），共享内存需要一个临时的、内存驻留的文件系统来存储共享的内存页
 - `shm` 为匿名页面提供统一的文件支持接口，使内核可以用文件操作函数（如 `readpage` 或 `writepage`）管理这些页面，实现匿名共享内存（如通过 `mmap` 创建的 `MAP_ANONYMOUS | MAP_SHARED` 区域）和 System V 共享内存（`shmget`）
@@ -274,7 +274,7 @@ draft: false
    };
    ```
 
-### `tmpfs`
+### `tmpfs` introduction
 - `tmpfs` 是面向用户的、通用的基于内存的文件系统，使用 RAM 作为存储媒介，用于提供临时存储和共享内存功能，能够通过挂载点提供更多功能
 - `tmpfs` 的核心实现文件在内核的 `shm.c`，`tmpfs` 的许多功能，包括内存页的管理、`inode` 的创建和操作等，都在这个文件中实现
 
