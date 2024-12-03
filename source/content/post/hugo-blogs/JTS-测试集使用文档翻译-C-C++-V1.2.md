@@ -1,6 +1,6 @@
 ---
 title: "JTS 使用文档翻译 C/C++ V1.2"
-date: 2023-12-26T14:37:39Z
+date: 2024-12-03T17:33:59Z
 draft: false
 tag: 
   - Juliet Test Suite v1.2 for C_Cpp - User Guide
