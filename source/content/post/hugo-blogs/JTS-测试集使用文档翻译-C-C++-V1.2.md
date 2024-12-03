@@ -7,6 +7,8 @@ tag:
   - CWE
 ---
 
+本文是 [Juliet Test Suite v1.2 for C_Cpp - User Guide.pdf](https://raw.githubusercontent.com/HCY-ASLEEP/picture-bed/main/picture-bed/Juliet_Test_Suite_v1.2_for_C_Cpp_-_User_Guide.pdf) 的中文翻译，官方网站位于 [https://samate.nist.gov/SARD/documentation#juliet](https://samate.nist.gov/SARD/documentation#juliet)
+
 # 第一章：介绍
 
 ## 1.1 文件目的
@@ -23,7 +25,7 @@ tag:
 
 ## 1.3 为什么需要测试用例？
 
-为了研究静态分析工具，CAS需要软件进行工具分析。CAS之前考虑使用“自然”或“人造”软件。自然软件是没有为测试静态分析工具而创建的软件。开源软件应用程序，如Apache Web服务器（httpd.apache.org）和OpenSSH套件（www.openssh.com），是自然软件的例子。人造软件，在这个情况下，是包含故意缺陷并专门为测试静态分析工具而创建的软件。测试用例是人造软件的一个例子。
+为了研究静态分析工具，CAS需要软件进行工具分析。CAS之前考虑使用“自然”或“人造”软件。自然软件是没有为测试静态分析工具而创建的软件。开源软件应用程序，如Apache Web服务器[httpd.apache.org](httpd.apache.org)和OpenSSH套件[www.openssh.com](www.openssh.com)，是自然软件的例子。人造软件，在这个情况下，是包含故意缺陷并专门为测试静态分析工具而创建的软件。测试用例是人造软件的一个例子。
 
 ### 1.3.1 自然代码的限制
 
