@@ -31,6 +31,6 @@ set-option -g set-clipboard on
 ### 在 tmux session 里面切换 session
 `Ctrl+b` `s`    (means [s]ession)
 
-#### 在 tmux 里面进入滚动模式
+### 在 tmux 里面进入滚动模式
 `Ctrl+b` `[`
 `q` 退出
