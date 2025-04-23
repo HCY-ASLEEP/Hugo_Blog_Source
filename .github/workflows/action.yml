@@ -22,7 +22,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.146.0'
+          hugo-version: '0.140.0'
 
       - name: Build
         run: hugo -s source/ && cp ./source/google188014ab03dc55b7.html ./source/public/
