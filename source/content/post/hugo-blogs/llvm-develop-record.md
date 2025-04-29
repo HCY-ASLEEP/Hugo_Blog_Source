@@ -45,3 +45,50 @@ lib/libclang-cpp.so.21.0git
 export LD_LIBRARY_PATH=$HOME/tools/clang-llvm-21/lib/aarch64-unknown-linux-gnu/
 ```
 
+## Floatzone 使用的 SPEC CPU 2017 配置
+
+```cfg
+# runcpu --config=asan_template --nobuild 500.perlbench
+#--------- Global Settings -----------
+label                 = infra-asan_O2
+makeflags             = -j16
+reportable            = no
+strict_rundir_verify  = no
+teeout                = yes
+tune                  = base
+
+#--------- How Many CPUs? ------------
+intrate,fprate:
+   copies            = 16
+intspeed,fpspeed:
+   threads           = 16
+
+#--------- Compilers -----------------
+default:
+    CC                 = /root/floatzone/llvm-default/bin/clang -O2 -Wno-int-conversion -fsanitize=address -fno-sanitize-address-use-after-scope -fsanitize-address-use-after-return=never -DSPEC_OPENMP -fopenmp -Wno-deprecated-non-prototype
+    CXX                = /root/floatzone/llvm-default/bin/clang++ -O2 -Wno-int-conversion -fsanitize=address -fno-sanitize-address-use-after-scope -fsanitize-address-use-after-return=never
+    FC                 = /usr/bin/false
+    CLD                = /root/floatzone/llvm-default/bin/clang -fsanitize=address -fno-sanitize-address-use-after-scope -fsanitize-address-use-after-return=never -fopenmp -L/root/floatzone/build/packages/rusage-counters/install/lib -Wl,--whole-archive -l:librusagecounters.a -Wl,--no-whole-archive
+    CXXLD              = /root/floatzone/llvm-default/bin/clang++ -fsanitize=address -fno-sanitize-address-use-after-scope -fsanitize-address-use-after-return=never -fopenmp -L/root/floatzone/build/packages/rusage-counters/install/lib -Wl,--whole-archive -l:librusagecounters.a -Wl,--no-whole-archive
+    COPTIMIZE          = -std=c99
+    CXXOPTIMIZE        = -std=c++03
+    CC_VERSION_OPTION  = --version
+    CXX_VERSION_OPTION = --version
+    FC_VERSION_OPTION  = --version
+
+#--------- Portability -----------------
+default:
+     EXTRA_PORTABILITY = -DSPEC_LP64
+
+500.perlbench_r,600.perlbench_s:
+PORTABILITY   = -DSPEC_LINUX_X64
+
+523.xalancbmk_r,623.xalancbmk_s:
+PORTABILITY   = -DSPEC_LINUX
+
+502.gcc_r,602.gcc_s=peak:
+LDOPTIMIZE   = -z muldefs
+
+intrate,intspeed:
+LDCFLAGS   = -z muldefs
+```
