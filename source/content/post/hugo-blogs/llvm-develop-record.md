@@ -10,7 +10,7 @@ draft: false
 ```bash
 cmake -G Ninja\
        -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lldb;lld"\
-       -DLLVM_ENABLE_RUNTIMES=all\
+       -DLLVM_ENABLE_RUNTIMES="libc;libunwind;libcxxabi;pstl;libcxx;compiler-rt;openmp;offload"\
        -DLIBCXX_ENABLE_SHARED=ON\
        -DLIBCXXABI_ENABLE_SHARED=ON\
        -DLLVM_USE_LINKER=lld\
