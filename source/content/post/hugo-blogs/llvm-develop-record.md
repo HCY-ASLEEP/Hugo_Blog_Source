@@ -45,6 +45,26 @@ lib/libclang-cpp.so.21.0git
 export LD_LIBRARY_PATH=$HOME/tools/clang-llvm-21/lib/aarch64-unknown-linux-gnu/
 ```
 
+## 阅读 libcxx 源码时配置 clangd 路径：
+```bash
+# ~/llvm4stl/libcxx/.clangd
+CompileFlags:
+  Add:
+    - -I/home/debian/llvm4stl/libcxx/include
+    - -stdlib=libc++
+    - -std=c++20
+    - -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE
+  Remove:
+    - -Werror
+    - -I/home/debian/llvm4stl/build/include/c++/v1
+Diagnostics:
+  Suppress:
+    - using_decl_conflict
+Index:
+  Background: Index
+```
+
+
 ## Floatzone 使用的 SPEC CPU 2017 配置
 
 ```cfg
